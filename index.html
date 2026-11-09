@@ -114,7 +114,7 @@
         .eb{border:1px solid #94a3b8;background:#f8fafc;padding:2px 8px;font-size:13px;cursor:pointer;min-height:28px}
         .eb:hover{background:#dcfce7}.esep{width:1px;height:22px;background:#cbd5e1;margin:0 4px}
         @media screen{.img-sel{outline:3px solid #c9a227}}
-        @media print{#edit-bar{display:none!important}#document-content-wrapper{padding-top:0!important}}
+        @media print{#img-handle,#img-bar{display:none!important}#edit-bar{display:none!important}#document-content-wrapper{padding-top:0!important}}
     </style>
 </head>
 <body class="text-slate-800 antialiased">
@@ -1501,7 +1501,27 @@ Gunakan struktur format JSON persis seperti ini:
         };
         window.eImgSize = d => {
             if (!selImg) { alert('Klik gambar dulu, lalu tekan Gbr + / Gbr −.'); return; }
-            selImg.style.width = Math.max(40, selImg.offsetWidth + d) + 'px'; selImg.style.height = 'auto';
+            selImg.style.width = Math.max(40, selImg.offsetWidth + d) + 'px'; selImg.style.height = 'auto'; selImg.style.maxWidth = '100%';
+            syncImg();
+        };
+        window.eImgSet = (k, v) => {
+            if (!selImg) { alert('Klik gambar dulu.'); return; }
+            const st = selImg.style;
+            if (k === 'align') { st.float = 'none'; st.display = 'block'; st.margin = v === 'left' ? '6px auto 6px 0' : v === 'right' ? '6px 0 6px auto' : '6px auto'; }
+            else if (k === 'float') { st.display = 'inline'; st.float = v; st.margin = v === 'left' ? '4px 12px 6px 0' : '4px 0 6px 12px'; }
+            else if (k === 'inline') { st.float = 'none'; st.display = 'inline'; st.margin = '0'; }
+            else if (k === 'pct') { st.width = v + '%'; st.height = 'auto'; }
+            else if (k === 'border') { st.border = st.border ? '' : '1px solid #000'; }
+            else if (k === 'del') { selImg.remove(); selImg = null; }
+            else if (k === 'reset') { selImg.style.cssText = 'max-width:100%;width:300px;height:auto'; }
+            syncImg();
+        };
+        window.eImgWH = () => {
+            if (!selImg) { alert('Klik gambar dulu.'); return; }
+            const w = +document.getElementById('imgW').value, h = +document.getElementById('imgH').value;
+            if (w > 0) selImg.style.width = w + 'px';
+            selImg.style.height = h > 0 ? h + 'px' : 'auto';
+            selImg.style.maxWidth = '100%'; syncImg();
         };
         window.eTable = () => {
             if (!restore()) return;
@@ -1528,9 +1548,37 @@ Gunakan struktur format JSON persis seperti ini:
             });
         };
         document.addEventListener('click', e => {
+            if (e.target.closest && e.target.closest('#edit-bar,#img-handle')) return;
             if (selImg) selImg.classList.remove('img-sel');
             selImg = (e.target.tagName === 'IMG' && W().contains(e.target)) ? e.target : null;
             if (selImg) selImg.classList.add('img-sel');
+            syncImg();
+        });
+        const handle = document.createElement('div');
+        handle.id = 'img-handle'; handle.title = 'Tarik untuk mengubah ukuran gambar';
+        handle.style.cssText = 'position:fixed;width:16px;height:16px;background:#c9a227;border:2px solid #14532d;cursor:nwse-resize;z-index:60;display:none;touch-action:none';
+        document.body.appendChild(handle);
+        const placeHandle = () => {
+            if (!selImg || !document.contains(selImg)) { handle.style.display = 'none'; return; }
+            const r = selImg.getBoundingClientRect();
+            if (!r.width) { handle.style.display = 'none'; return; }
+            handle.style.left = (r.right - 8) + 'px'; handle.style.top = (r.bottom - 8) + 'px'; handle.style.display = 'block';
+        };
+        const syncImg = () => {
+            if (selImg && !document.contains(selImg)) selImg = null;
+            const ib = document.getElementById('img-bar');
+            if (ib) ib.style.display = selImg ? 'flex' : 'none';
+            if (selImg) { document.getElementById('imgW').value = Math.round(selImg.offsetWidth); document.getElementById('imgH').value = Math.round(selImg.offsetHeight); }
+            placeHandle();
+        };
+        addEventListener('scroll', placeHandle, true); addEventListener('resize', placeHandle);
+        handle.addEventListener('pointerdown', e => {
+            e.preventDefault(); if (!selImg) return;
+            const sx = e.clientX, sw = selImg.offsetWidth;
+            handle.setPointerCapture(e.pointerId);
+            const mv = ev => { selImg.style.width = Math.max(30, sw + ev.clientX - sx) + 'px'; selImg.style.height = 'auto'; selImg.style.maxWidth = '100%'; syncImg(); };
+            const up = () => { handle.removeEventListener('pointermove', mv); handle.removeEventListener('pointerup', up); };
+            handle.addEventListener('pointermove', mv); handle.addEventListener('pointerup', up);
         });
         const B = (h, t, js) => `<button type="button" class="eb" title="${t}" onmousedown="event.preventDefault()" onclick="${js}">${h}</button>`;
         const SEP = '<span class="esep"></span>';
@@ -1550,6 +1598,20 @@ Gunakan struktur format JSON persis seperti ini:
             B('▦ Tabel', 'Sisipkan tabel', 'eTable()'), B('+Baris', 'Tambah baris di bawah sel', 'eRow(1)'), B('−Baris', 'Hapus baris', 'eRow(-1)'), B('+Kolom', 'Tambah kolom', 'eCol(1)'), B('−Kolom', 'Hapus kolom', 'eCol(-1)'), SEP,
             B('Hapus format', 'Bersihkan format', "fmt('removeFormat')")
         ].join('');
+        const IB = (h, t, js) => `<button type="button" class="eb" title="${t}" onclick="${js}">${h}</button>`;
+        const ib = document.createElement('div');
+        ib.id = 'img-bar';
+        ib.style.cssText = 'display:none;position:absolute;top:100%;left:0;right:0;flex-wrap:wrap;gap:4px;align-items:center;background:#fefce8;border-bottom:2px solid #c9a227;padding:6px 12px;box-shadow:0 3px 6px #0002';
+        ib.innerHTML = [
+            '<b style="font-size:13px">Gambar terpilih:</b>',
+            IB('◧ Kiri', 'Rata kiri (blok)', "eImgSet('align','left')"), IB('▣ Tengah', 'Rata tengah', "eImgSet('align','center')"), IB('◨ Kanan', 'Rata kanan (blok)', "eImgSet('align','right')"), SEP,
+            IB('Teks di kanan', 'Gambar di kiri, teks mengalir di kanannya', "eImgSet('float','left')"), IB('Teks di kiri', 'Gambar di kanan, teks mengalir di kirinya', "eImgSet('float','right')"), IB('Sebaris teks', 'Kembali sebaris dengan teks', "eImgSet('inline')"), SEP,
+            IB('25%', 'Lebar 25%', "eImgSet('pct',25)"), IB('50%', 'Lebar 50%', "eImgSet('pct',50)"), IB('75%', 'Lebar 75%', "eImgSet('pct',75)"), IB('100%', 'Lebar penuh', "eImgSet('pct',100)"), SEP,
+            'Lebar <input type="number" id="imgW" class="eb" style="width:68px" min="30"> Tinggi <input type="number" id="imgH" class="eb" style="width:68px" min="0" placeholder="auto"> px',
+            IB('Terapkan', 'Terapkan lebar/tinggi (tinggi kosong atau 0 = otomatis)', 'eImgWH()'), SEP,
+            IB('Bingkai', 'Beri/hapus garis tepi', "eImgSet('border')"), IB('Reset', 'Kembalikan ukuran awal', "eImgSet('reset')"), IB('🗑 Hapus', 'Hapus gambar', "eImgSet('del')")
+        ].join('');
+        bar.appendChild(ib);
         W().setAttribute('contenteditable', '');
         W().setAttribute('spellcheck', 'false');
         W().parentNode.insertBefore(bar, W());
