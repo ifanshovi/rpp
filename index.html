@@ -173,8 +173,11 @@
 <div><label class="lb">Jumlah Pertemuan</label><input type="number" id="alokasiPertemuan" min="0" class="in" placeholder="Otomatis"></div>
 </div></details></div>
 <div class="bx"><h3>2. Isi Pembelajaran</h3>
-<label class="lb">Topik / tujuan singkat (opsional, kosong = mengikuti Materi Pokok)</label>
+<label class="lb">Topik singkat (opsional, kosong = mengikuti Materi Pokok)</label>
 <textarea id="topikPembelajaran" rows="2" class="in" placeholder="Contoh: Menentukan keliling dan luas bangun datar."></textarea>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+<div><label class="lb">Capaian Pembelajaran / CP (opsional)</label><textarea id="cpInput" rows="3" class="in" placeholder="Tempel CP dari dokumen KBC / Kemenag"></textarea></div>
+<div><label class="lb">Tujuan Pembelajaran / TP (opsional)</label><textarea id="tpInput" rows="3" class="in" placeholder="Tempel TP; satu TP per baris. Kosong = disusun AI"></textarea></div></div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3"><div><label class="lb">Model Pembelajaran</label>
 <select id="modelPembelajaran" class="in"><option value="Otomatis (Bebas)">Otomatis (Bebas)</option><option value="Project-Based Learning (PjBL)">Project-Based Learning (PjBL)</option><option value="Problem-Based Learning (PBL)">Problem-Based Learning (PBL)</option><option value="Inquiry Learning">Inquiry Learning</option><option value="Discovery Learning">Discovery Learning</option><option value="Cooperative Learning">Cooperative Learning</option></select></div></div>
 <label class="lb mt-3">Fokus Panca Cinta (kosong = otomatis)</label>
@@ -237,7 +240,7 @@
                 <img src="https://i.ibb.co.com/9kBmvppK/LOGO-MIN-TERBARU-u.png" alt="Logo" style="width:110px;height:110px;object-fit:contain" onerror="this.style.display='none'">
                 <h1 class="font-bold text-xl uppercase mt-4">RENCANA PELAKSANAAN PEMBELAJARAN (RPP)</h1>
                 <h2 class="font-bold text-lg">KURIKULUM BERBASIS CINTA (KBC)</h2>
-                <h3 class="font-semibold">TERINTEGRASI EKOTEOLOGI DAN MADRASAH RAMAH ANAK</h3>
+                <h3 class="font-semibold">TERINTEGRASI EKOTEOLOGI/ADIWIYATA DAN MADRASAH RAMAH ANAK</h3>
                 <table class="idt mt-8"><tbody>
                     <tr><td>Satuan Pendidikan</td><td>MIN 10 Magetan</td></tr>
                     <tr><td>Penyusun</td><td id="out-penyusun"></td></tr>
@@ -683,6 +686,8 @@
             }
             
             const mapel = document.getElementById('mapel').value || "Pelajaran";
+            const cp = document.getElementById('cpInput').value.trim();
+            const tpGuru = document.getElementById('tpInput').value.trim();
             
             const pancaCintaChecked = Array.from(document.querySelectorAll('input[name="pancaCinta"]:checked')).map(cb => cb.value);
             const pancaCinta = pancaCintaChecked.length > 0 ? pancaCintaChecked.join(', ') : "Otomatis (Bebas)";
@@ -727,7 +732,7 @@
 
             const promptText = `Tolong buatkan RPP Kurikulum Berbasis Cinta (KBC) Terintegrasi Ekoteologi dan Madrasah Ramah Anak MIN 10 Magetan.
 Topik/Materi Dasar: ${topik}
-Mapel: ${mapel}
+${cp ? 'Capaian Pembelajaran (CP): ' + cp + '\n' : ''}${tpGuru ? 'Tujuan Pembelajaran (TP) dari guru: ' + tpGuru + '\n' : ''}Mapel: ${mapel}
 Panca Cinta: ${pancaCinta}
 Ekoteologi: ${ekoText}
 Dalil: ${ek.dalil ? 'WAJIB sertakan 1-3 dalil (Al-Qur\'an dan/atau Hadis) yang relevan di key "dalil"' : 'Tidak perlu dalil, kosongkan array "dalil"'}
@@ -748,6 +753,7 @@ ATURAN SANGAT PENTING:
 9. DALIL EKOTEOLOGI: hanya pakai dalil yang Anda yakin keasliannya (contoh: QS. Al-A'raf:56, QS. Ar-Rum:41, QS. Al-Baqarah:30, QS. Al-An'am:165, QS. Hud:61, HR. Bukhari-Muslim tentang menanam pohon). Tulis teks Arab berharakat, terjemah Indonesia, dan sumber (nama surat:ayat atau perawi). JANGAN mengarang dalil; bila ragu, kosongkan. Hubungkan dalil dengan materi pada penjelasan ekoteologi.
 10. PANCA CINTA: array "pancaCinta" WAJIB berisi 5 objek dengan nama persis seperti contoh. Set "cek": true hanya untuk Panca Cinta yang benar-benar diinsersikan (jika guru memilih fokus tertentu, ikuti pilihan itu) dan isi "insersi" singkat 1-2 kalimat; yang tidak sesuai "cek": false dan "insersi" kosong.
 11. AKSI NYATA EKOTEOLOGI: Tema/isu lingkungan dan Aksi nyata yang tertulis di atas WAJIB benar-benar dijalankan dalam pembelajaran: (a) tulis sebagai langkah eksplisit di Kegiatan Pendahuluan/Inti/Penutup (mis. "Melakukan aksi nyata: ..."), (b) buat satu bagian khusus di LKPD yang diawali "Bagian ...: Aksi Nyata Ekoteologi" berisi tugas/pertanyaan yang menghubungkan materi dengan tema dan aksi tersebut (mis. mencatat data hasil aksi dan refleksi), (c) kaitkan dengan penjelasan ekoteologi dan dalilnya. Jika tema "Otomatis", pilih sendiri tema yang paling relevan dengan materi; jika aksi nyata kosong, rancang aksi sederhana yang aman dan realistis di kelas/madrasah.
+12. CP/TP: jika CP dan/atau TP dari guru diisi di atas, jadikan acuan utama. Pakai redaksi TP guru apa adanya pada "tujuanPembelajaran" dan "tpSederhana" (boleh disederhanakan bahasanya untuk murid), turunkan "iktp" dari TP tersebut, serta pastikan kegiatan, LKPD, dan soal sumatif selaras dengannya. Jika kosong, susun sendiri CP/TP yang sesuai materi dan fase.
 
 Gunakan struktur format JSON persis seperti ini:
 {
@@ -948,7 +954,7 @@ Gunakan struktur format JSON persis seperti ini:
 
                 <!-- B. Ekoteologi -->
                 <div class="mb-4">
-                    <h3 class="font-bold uppercase">B. Integrasi Ekoteologi (Nilai Islam dan Pelestarian Lingkungan)</h3>
+                    <h3 class="font-bold uppercase">B. Integrasi Ekoteologi (Nilai Islam dan Pelestarian Lingkungan) dan Adiwiyata</h3>
                     <div class="pl-4 mt-1" ${editAttr} data-placeholder="Ketik integrasi ekoteologi...">${ekoUraian}</div>
                     ${dalilHtml}
                 </div>
