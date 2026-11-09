@@ -253,9 +253,8 @@
                     <tr><td>Alokasi Waktu</td><td id="out-alokasi" contenteditable="true" data-placeholder="Ketik alokasi waktu..."></td></tr>
                     <tr><td>Model Pembelajaran</td><td id="out-model" contenteditable="true" data-placeholder="Ketik model pembelajaran..."></td></tr>
                 </tbody></table>
-                <div class="pt-8 font-bold uppercase text-sm">MADRASAH IBTIDAIYAH NEGERI 10 MAGETAN<br>KANTOR KEMENTERIAN AGAMA KABUPATEN MAGETAN</div>
-                <div class="text-xs mt-1">Jln. Kopek Ronggo Galih, Desa Sidorejo, Kecamatan Sidorejo, Kabupaten Magetan</div>
-                <div class="font-bold mt-1">Tahun Pelajaran <span id="out-tp2"></span></div>
+                <div class="pt-8 font-bold uppercase text-sm">KANTOR KEMENTERIAN AGAMA KABUPATEN MAGETAN<br>MADRASAH IBTIDAIYAH NEGERI 10 MAGETAN</div>
+                <div class="font-bold mt-1"><span id="out-tp2"></span></div>
             </div>
             <div class="page-break text-center mb-4">
                 <h2 class="font-bold text-lg uppercase">RPP KBC Terintegrasi Ekoteologi dan Madrasah Ramah Anak</h2>
@@ -584,7 +583,7 @@
             document.getElementById('out-tema-panca-cinta').innerText = pcOutput;
             const ek = ekoInfo();
             document.getElementById('out-eko').innerText = (ek.dims.length ? ek.dims.join(', ') : 'Otomatis') + ' | ' + ek.tema;
-            document.getElementById('out-tp2').innerText = document.getElementById('tp').value;
+            document.getElementById('out-tp2').innerText = (document.getElementById('tanggal').value || '').slice(0, 4) || new Date().getFullYear();
             document.getElementById('out-judul-materi').innerText = document.getElementById('materiPokok').value;
 
             const rawTanggal = document.getElementById('tanggal').value;
