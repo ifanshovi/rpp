@@ -113,6 +113,79 @@
         #edit-bar{position:fixed;left:0;right:0;background:#fff;border-bottom:2px solid #c9a227;z-index:40;display:flex;flex-wrap:wrap;gap:4px;padding:6px 12px;align-items:center;box-shadow:0 2px 6px #0002}
         .eb{border:1px solid #94a3b8;background:#f8fafc;padding:2px 8px;font-size:13px;cursor:pointer;min-height:28px}
         .eb:hover{background:#dcfce7}.esep{width:1px;height:22px;background:#cbd5e1;margin:0 4px}
+        /* ===== Ribbon ala MS Word ===== */
+        #edit-bar{background:#f3f3f3!important;border-bottom:1px solid #c8c8c8!important;padding:0!important;display:block!important;box-shadow:0 2px 6px #0003!important}
+        #edit-bar .rtabs{display:flex;background:#f3f3f3;padding:2px 10px 0;gap:2px;font:600 13px 'Segoe UI',Arial,sans-serif;border-bottom:1px solid #d4d4d4}
+        #edit-bar .rtab{padding:4px 14px;color:#444}
+        #edit-bar .rtab.on{background:#fff;color:#14532d;border:1px solid #d4d4d4;border-bottom:2px solid #fff;margin-bottom:-1px;border-top:3px solid #14532d}
+        #edit-bar .rib{display:flex;flex-wrap:wrap;background:#fff;padding:4px 8px;margin:6px 8px;border:1px solid #d4d4d4;border-radius:8px;box-shadow:0 1px 3px #0001;position:relative}
+        #img-bar{background:#fffaf0!important}
+        .eg{display:flex;flex-direction:column;padding:2px 10px 0;border-right:1px solid #dcdcdc;min-width:0}
+        .eg:last-child{border-right:0}
+        .eg>.egb{display:flex;flex-direction:column;gap:4px;justify-content:center;flex:1;padding:2px 0}
+        .eg>.egl{font:11px 'Segoe UI',Arial,sans-serif;color:#555;text-align:center;padding:2px 0 3px;white-space:nowrap}
+        .er{display:flex;gap:2px;align-items:center;flex-wrap:nowrap}
+        .eb{border:1px solid transparent;background:transparent;padding:0 6px;font:13px 'Segoe UI',Arial,sans-serif;cursor:pointer;min-width:28px;height:28px;border-radius:4px;color:#222;display:inline-flex;align-items:center;justify-content:center;gap:4px}
+        .eb:hover{background:#e6e6e6;border-color:#d0d0d0}.eb:active{background:#cfe8d6}
+        .eb.big{flex-direction:column;height:62px;min-width:54px;font-size:11px;gap:3px}
+        .eb.big i{font-size:22px;color:#14532d}
+        .eb i{font-size:14px}
+        select.eb,input.eb[type=number]{border:1px solid #c8c8c8;background:#fff;height:26px;padding:0 3px}
+        select.eb:hover{border-color:#14532d}
+        .esep{display:none}
+        #edit-bar .rtab{cursor:pointer}#edit-bar .rtab:hover:not(.on){background:#e8e8e8}
+        #edit-bar .rtab.pic{color:#7c5e00}#edit-bar .rtab.pic.on{border-top-color:#c9a227}
+        #edit-bar .lbl{font:11px 'Segoe UI',Arial,sans-serif;color:#555;white-space:nowrap}
+        #edit-bar .rib[data-p=pic]{background:#fffaf0}
+        @media screen and (max-width:700px){.eg{padding:2px 6px}.rib{margin:4px}}
+        #edit-bar .rtabs{overflow-x:auto;white-space:nowrap;scrollbar-width:thin}
+        #edit-bar .rtab{flex:none}
+        #edit-bar .rtab.tbl{color:#1d4ed8}#edit-bar .rtab.tbl.on{border-top-color:#2563eb}
+        #edit-bar .rib[data-p=tbl]{background:#f5f9ff}
+        #edit-bar.coll .rib{display:none!important}
+        .ecol{display:flex;flex-direction:column;gap:4px;justify-content:center}
+        .eb.on{background:#cfe8d6;border-color:#14532d}
+        #edit-bar .ruler{background:#f3f3f3;padding:3px 8px 4px;border-top:1px solid #d4d4d4;overflow:hidden}
+        .cmt{background:#fff2a8;border-bottom:1px dotted #b8860b;cursor:help}
+        .hide-cmt .cmt{background:none!important;border-bottom:0!important}
+        .marks p::after,.marks li::after,.marks h1::after,.marks h2::after,.marks h3::after,.marks h4::after,.marks td::after,.marks th::after{content:'¶';color:#2563eb;font-size:.85em;margin-left:2px}
+        .gridv td,.gridv th{outline:1px dashed #94a3b8}
+        #document-content-wrapper blockquote{border-left:3px solid #c9a227;padding-left:10px;font-style:italic;margin:8px 0 8px 1cm}
+        #status-bar{position:fixed;left:0;right:0;bottom:0;height:28px;background:#f3f3f3;border-top:1px solid #c8c8c8;z-index:45;display:flex;align-items:center;gap:18px;padding:0 12px;font:12px 'Segoe UI',Arial,sans-serif;color:#333}
+        #status-bar .sbz{margin-left:auto;display:flex;align-items:center;gap:6px}
+        #wm{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-38deg);font:bold min(110px,14vw) Arial,sans-serif;color:rgba(0,0,0,.09);pointer-events:none;user-select:none;white-space:nowrap;z-index:5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+        @media screen{#document-content-wrapper{margin-bottom:44px}}
+        @media print{#status-bar,#edit-bar{display:none!important}.marks *::after{content:none!important}.cmt{background:none!important;border:0!important}.gridv *{outline:none!important}#document-content-wrapper{zoom:1!important}}
+        /* ===== Desktop: toolbar 3 baris per grup (ikon + teks) ===== */
+        @media (min-width:1024px){
+          #edit-bar .rib{flex-wrap:wrap;row-gap:4px;overflow:visible;padding:4px 6px;margin:4px 8px;align-items:stretch}
+          #edit-bar .eg{flex:none;flex-direction:column;justify-content:center;padding:0 8px}
+          #edit-bar .eg>.egl{display:none}
+          #edit-bar .eg>.egb{flex-direction:column;gap:2px;justify-content:center;flex:none;padding:0}
+          #edit-bar .ecol{flex-direction:column;gap:2px}
+          #edit-bar .er{gap:2px;flex-wrap:nowrap}
+          #edit-bar .eb{height:26px;padding:0 6px;gap:5px;font-size:12px}
+          #edit-bar .eb.big{height:82px;min-width:58px;flex-direction:column;gap:4px;font-size:11px}
+          #edit-bar .eb.big i{font-size:22px}
+          #edit-bar .rtabs{padding-right:12px}
+        }
+        /* ===== HP / tablet: satu baris ringkas, ikon saja, geser ke samping ===== */
+        @media (max-width:1023px){
+          #edit-bar .rtab[data-t=design],#edit-bar .rtab[data-t=review]{display:none}
+          #edit-bar .rtab{padding:6px 12px}
+          #edit-bar .rib{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;margin:4px;padding:3px 4px;align-items:center;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+          #edit-bar .rib::-webkit-scrollbar{display:none}
+          #edit-bar .eg{flex:none;flex-direction:row;align-items:center;padding:0 6px}
+          #edit-bar .eg>.egl{display:none}
+          #edit-bar .eg>.egb{flex-direction:row;gap:2px;align-items:center;flex:none;padding:0}
+          #edit-bar .ecol{flex-direction:row;gap:2px}
+          #edit-bar .er{gap:2px;flex-wrap:nowrap}
+          #edit-bar .eb{min-width:34px;height:34px;padding:0 6px}
+          #edit-bar .eb .bt,#edit-bar .eb.big span{display:none}
+          #edit-bar .eb.big{flex-direction:row;height:34px;min-width:34px}
+          #edit-bar .eb.big i{font-size:15px}
+          #edit-bar .mh{display:none!important}
+        }
         @media screen{.img-sel{outline:3px solid #c9a227}}
         @media print{#img-handle,#img-bar{display:none!important}#edit-bar{display:none!important}#document-content-wrapper{padding-top:0!important}}
     </style>
@@ -1481,6 +1554,8 @@ Gunakan struktur format JSON persis seperti ini:
             document.execCommand('fontSize', false, '7');
             W().querySelectorAll('font[size="7"]').forEach(f => { const sp = document.createElement('span'); sp.style.fontSize = px + 'px'; sp.innerHTML = f.innerHTML; f.replaceWith(sp); });
         };
+        window.eFont = f => { if (!f || !restore()) return; document.execCommand('fontName', false, f); };
+        window.eHL = c => { if (!restore()) return; document.execCommand('hiliteColor', false, c) || document.execCommand('backColor', false, c); };
         window.eLine = v => { if (!v || !restore()) return; const h = host(); if (h) h.style.lineHeight = v; };
         window.eImg = inp => {
             const file = inp.files[0];
@@ -1513,14 +1588,14 @@ Gunakan struktur format JSON persis seperti ini:
             else if (k === 'pct') { st.width = v + '%'; st.height = 'auto'; }
             else if (k === 'border') { st.border = st.border ? '' : '1px solid #000'; }
             else if (k === 'del') { selImg.remove(); selImg = null; }
-            else if (k === 'reset') { selImg.style.cssText = 'max-width:100%;width:300px;height:auto'; }
+            else if (k === 'reset') { selImg.style.cssText = 'max-width:100%;width:300px;height:auto'; ['br','ct','gs','sp','op','rot','bw','bc'].forEach(x => delete selImg.dataset[x]); }
             syncImg();
         };
         window.eImgWH = () => {
             if (!selImg) { alert('Klik gambar dulu.'); return; }
             const w = +document.getElementById('imgW').value, h = +document.getElementById('imgH').value;
-            if (w > 0) selImg.style.width = w + 'px';
-            selImg.style.height = h > 0 ? h + 'px' : 'auto';
+            if (w > 0) selImg.style.width = (w * 37.795) + 'px';
+            selImg.style.height = h > 0 ? (h * 37.795) + 'px' : 'auto';
             selImg.style.maxWidth = '100%'; syncImg();
         };
         window.eTable = () => {
@@ -1550,6 +1625,7 @@ Gunakan struktur format JSON persis seperti ini:
         document.addEventListener('click', e => {
             if (e.target.closest && e.target.closest('#edit-bar,#img-handle')) return;
             if (selImg) selImg.classList.remove('img-sel');
+            if (selImg) delete selImg.dataset.seen;
             selImg = (e.target.tagName === 'IMG' && W().contains(e.target)) ? e.target : null;
             if (selImg) selImg.classList.add('img-sel');
             syncImg();
@@ -1566,9 +1642,16 @@ Gunakan struktur format JSON persis seperti ini:
         };
         const syncImg = () => {
             if (selImg && !document.contains(selImg)) selImg = null;
-            const ib = document.getElementById('img-bar');
-            if (ib) ib.style.display = selImg ? 'flex' : 'none';
-            if (selImg) { document.getElementById('imgW').value = Math.round(selImg.offsetWidth); document.getElementById('imgH').value = Math.round(selImg.offsetHeight); }
+            const pt = document.querySelector('#edit-bar .rtab.pic');
+            if (pt) {
+                pt.style.display = selImg ? '' : 'none';
+                if (window.eTab) {
+                    const on = document.querySelector('#edit-bar .rtab.on');
+                    if (selImg && !selImg.dataset.seen) { selImg.dataset.seen = 1; eTab('pic'); }
+                    else if (!selImg && on && on.dataset.t === 'pic') eTab('home');
+                }
+            }
+            if (selImg && document.getElementById('imgW')) { document.getElementById('imgW').value = (selImg.offsetWidth / 37.795).toFixed(1); document.getElementById('imgH').value = (selImg.offsetHeight / 37.795).toFixed(1); }
             placeHandle();
         };
         addEventListener('scroll', placeHandle, true); addEventListener('resize', placeHandle);
@@ -1585,33 +1668,594 @@ Gunakan struktur format JSON persis seperti ini:
         const opts = a => a.map(n => `<option>${n}</option>`).join('');
         const bar = document.createElement('div');
         bar.id = 'edit-bar';
-        bar.innerHTML = [
-            B('↶', 'Urungkan', "fmt('undo')"), B('↷', 'Ulangi', "fmt('redo')"), SEP,
-            B('<b>B</b>', 'Tebal', "fmt('bold')"), B('<i>I</i>', 'Miring', "fmt('italic')"), B('<u>U</u>', 'Garis bawah', "fmt('underline')"), B('<s>S</s>', 'Coret', "fmt('strikeThrough')"), SEP,
-            `<select class="eb" title="Ukuran huruf (px)" onchange="eSize(this.value);this.selectedIndex=0"><option value="">Ukuran</option>${opts([10,11,12,13,14,16,18,20,24,28])}</select>`,
-            `<select class="eb" title="Spasi baris" onchange="eLine(this.value);this.selectedIndex=0"><option value="">Spasi</option>${opts(['1','1.15','1.5','2','2.5'])}</select>`,
-            `<input type="color" class="eb" style="padding:0;width:32px" title="Warna huruf" value="#000000" onchange="fmt('foreColor',this.value)">`, SEP,
-            B('Kiri', 'Rata kiri', "fmt('justifyLeft')"), B('Tengah', 'Rata tengah', "fmt('justifyCenter')"), B('Kanan', 'Rata kanan', "fmt('justifyRight')"), B('Rata', 'Rata kiri-kanan (justify)', "fmt('justifyFull')"), SEP,
-            B('• Daftar', 'Daftar poin', "fmt('insertUnorderedList')"), B('1. Daftar', 'Daftar nomor', "fmt('insertOrderedList')"), SEP,
-            B('🖼 Gambar', 'Sisipkan gambar', "document.getElementById('eImgIn').click()"), '<input type="file" id="eImgIn" accept="image/*" class="hidden" onchange="eImg(this)">',
-            B('Gbr +', 'Perbesar gambar terpilih', 'eImgSize(40)'), B('Gbr −', 'Perkecil gambar terpilih', 'eImgSize(-40)'), SEP,
-            B('▦ Tabel', 'Sisipkan tabel', 'eTable()'), B('+Baris', 'Tambah baris di bawah sel', 'eRow(1)'), B('−Baris', 'Hapus baris', 'eRow(-1)'), B('+Kolom', 'Tambah kolom', 'eCol(1)'), B('−Kolom', 'Hapus kolom', 'eCol(-1)'), SEP,
-            B('Hapus format', 'Bersihkan format', "fmt('removeFormat')")
-        ].join('');
-        const IB = (h, t, js) => `<button type="button" class="eb" title="${t}" onclick="${js}">${h}</button>`;
-        const ib = document.createElement('div');
-        ib.id = 'img-bar';
-        ib.style.cssText = 'display:none;position:absolute;top:100%;left:0;right:0;flex-wrap:wrap;gap:4px;align-items:center;background:#fefce8;border-bottom:2px solid #c9a227;padding:6px 12px;box-shadow:0 3px 6px #0002';
-        ib.innerHTML = [
-            '<b style="font-size:13px">Gambar terpilih:</b>',
-            IB('◧ Kiri', 'Rata kiri (blok)', "eImgSet('align','left')"), IB('▣ Tengah', 'Rata tengah', "eImgSet('align','center')"), IB('◨ Kanan', 'Rata kanan (blok)', "eImgSet('align','right')"), SEP,
-            IB('Teks di kanan', 'Gambar di kiri, teks mengalir di kanannya', "eImgSet('float','left')"), IB('Teks di kiri', 'Gambar di kanan, teks mengalir di kirinya', "eImgSet('float','right')"), IB('Sebaris teks', 'Kembali sebaris dengan teks', "eImgSet('inline')"), SEP,
-            IB('25%', 'Lebar 25%', "eImgSet('pct',25)"), IB('50%', 'Lebar 50%', "eImgSet('pct',50)"), IB('75%', 'Lebar 75%', "eImgSet('pct',75)"), IB('100%', 'Lebar penuh', "eImgSet('pct',100)"), SEP,
-            'Lebar <input type="number" id="imgW" class="eb" style="width:68px" min="30"> Tinggi <input type="number" id="imgH" class="eb" style="width:68px" min="0" placeholder="auto"> px',
-            IB('Terapkan', 'Terapkan lebar/tinggi (tinggi kosong atau 0 = otomatis)', 'eImgWH()'), SEP,
-            IB('Bingkai', 'Beri/hapus garis tepi', "eImgSet('border')"), IB('Reset', 'Kembalikan ukuran awal', "eImgSet('reset')"), IB('🗑 Hapus', 'Hapus gambar', "eImgSet('del')")
-        ].join('');
-        bar.appendChild(ib);
+        const I = (n, extra = '') => `<i class="fa-solid fa-${n}" ${extra}></i>`;
+        const R = (...it) => `<div class="er">${it.join('')}</div>`;
+        const G = (label, ...rows) => `<div class="eg"><div class="egb">${rows.join('')}</div><span class="egl">${label}</span></div>`;
+        const BB = (icon, label, t, js) => `<button type="button" class="eb big" title="${t}" onmousedown="event.preventDefault()" onclick="${js}">${I(icon)}<span>${label}</span></button>`;
+        const sel = (t, ph, list, fn, w) => `<select class="eb" style="${w ? 'width:' + w + 'px' : ''}" title="${t}" onchange="${fn}(this.value);this.selectedIndex=0"><option value="">${ph}</option>${opts(list)}</select>`;
+        const selV = (t, ph, list, js, w) => `<select class="eb" style="width:${w}px" title="${t}" onchange="${js};this.selectedIndex=0"><option value="">${ph}</option>${list.map(([l, v]) => `<option value="${v}">${l}</option>`).join('')}</select>`;
+        const selS = (t, list, js, w, cur) => `<select class="eb" style="width:${w}px" title="${t}" onchange="${js}">${list.map(([l, v]) => `<option value="${v}"${v === cur ? ' selected' : ''}>${l}</option>`).join('')}</select>`;
+        const numIn = (id, t, js, step) => `<input type="number" id="${id}" class="eb" style="width:66px" step="${step || 0.5}" title="${t}" placeholder="0" onchange="${js}">`;
+        const colorBtn = (icon, t, js, col) => `<label class="eb" title="${t}" style="position:relative">${I(icon, 'style="color:' + col + '"')}<input type="color" value="${col}" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%" onchange="${js}"></label>`;
+        const swatch = css => `<span style="display:inline-block;width:34px;height:24px;background:linear-gradient(135deg,#bfe3c8,#4f9a68);${css}"></span>`;
+        const ARR = () => G('Susun',
+            R(selV('Posisi gambar', 'Posisi', [['Rata kiri', 'left'], ['Tengah', 'center'], ['Rata kanan', 'right']], "eImgSet('align',this.value)", 96),
+              selV('Pembungkus teks (Wrap Text)', 'Wrap Text', [['Sebaris dengan teks', 'inline'], ['Teks di kanan gambar', 'fl'], ['Teks di kiri gambar', 'fr'], ['Atas dan bawah', 'tb']], "eImgWrap(this.value)", 112)),
+            R(B(I('arrow-up') + ' Maju', 'Bring Forward: majukan lapisan gambar', 'eImgZ(1)'), B(I('arrow-down') + ' Mundur', 'Send Backward: mundurkan lapisan gambar', 'eImgZ(-1)'),
+              B(I('rotate-right') + ' 90°', 'Putar 90° ke kanan', 'eImgRot(90)'), B(I('rotate-left') + ' 90°', 'Putar 90° ke kiri', 'eImgRot(-90)')));
+        const PNL = (id, items, on) => `<div class="rib" data-p="${id}" style="${on ? '' : 'display:none'}">${items.join('')}</div>`;
+        const COL = (...rows) => `<div class="ecol">${rows.join('')}</div>`;
+        const HOME = [
+            G('Papan Klip', `<div class="er">${BB('paste', 'Tempel', 'Tempel sebagai teks biasa', 'ePaste()')}${COL(
+                R(B(I('scissors') + ' Potong', 'Potong (Ctrl+X)', "fmt('cut')")),
+                R(B(I('copy') + ' Salin', 'Salin (Ctrl+C)', "fmt('copy')")),
+                R(B(I('paintbrush') + ' Format', 'Format Painter: klik teks bergaya, lalu blok teks tujuan', 'eFP()')))}</div>`),
+            G('Riwayat', R(B(I('rotate-left'), 'Urungkan (Ctrl+Z)', "fmt('undo')"), B(I('rotate-right'), 'Ulangi (Ctrl+Y)', "fmt('redo')"))),
+            G('Font',
+                R(sel('Jenis huruf', 'Font', ['Times New Roman', 'Arial', 'Calibri', 'Cambria', 'Georgia', 'Tahoma', 'Verdana', 'Amiri'], 'eFont', 130),
+                  sel('Ukuran huruf (px)', 'Ukuran', [10, 11, 12, 13, 14, 16, 18, 20, 24, 28], 'eSize', 74)),
+                R(B('<b>B</b>', 'Tebal (Ctrl+B)', "fmt('bold')"), B('<i>I</i>', 'Miring (Ctrl+I)', "fmt('italic')"), B('<u>U</u>', 'Garis bawah (Ctrl+U)', "fmt('underline')"), B('<s>ab</s>', 'Coret', "fmt('strikeThrough')"),
+                  B('x<sub>2</sub>', 'Subskrip', "fmt('subscript')"), B('x<sup>2</sup>', 'Superskrip', "fmt('superscript')")),
+                R(B('A<sup>+</sup>', 'Perbesar huruf', 'eSizeStep(1)'), B('A<sup>−</sup>', 'Perkecil huruf', 'eSizeStep(-1)'),
+                  selV('Ubah huruf besar/kecil', 'Aa', [['HURUF BESAR', 'up'], ['huruf kecil', 'low'], ['Kapital Tiap Kata', 'title'], ['Kalimat', 'sent']], 'eCase(this.value)', 62),
+                  colorBtn('highlighter', 'Warna sorot (highlight)', 'eHL(this.value)', '#f5c400'), colorBtn('font', 'Warna huruf', "fmt('foreColor',this.value)", '#d00000'),
+                  B(I('eraser'), 'Bersihkan format', "fmt('removeFormat')"))),
+            G('Paragraf',
+                R(B(I('list-ul'), 'Daftar poin', "fmt('insertUnorderedList')"), B(I('list-ol'), 'Daftar nomor', "fmt('insertOrderedList')"), B(I('outdent'), 'Kurangi indentasi', "fmt('outdent')"), B(I('indent'), 'Tambah indentasi', "fmt('indent')")),
+                R(B(I('align-left'), 'Rata kiri', "fmt('justifyLeft')"), B(I('align-center'), 'Rata tengah', "fmt('justifyCenter')"), B(I('align-right'), 'Rata kanan', "fmt('justifyRight')"), B(I('align-justify'), 'Rata kiri-kanan', "fmt('justifyFull')")),
+                R(sel('Spasi baris', '↕ Spasi', ['1', '1.15', '1.5', '2', '2.5'], 'eLine', 84),
+                  colorBtn('fill-drip', 'Warna latar (sel/paragraf)', 'eShade(this.value)', '#86efac'), B(I('border-all'), 'Bingkai paragraf (hidup/mati)', 'eParaBorder()'), B(I('paragraph'), 'Tampilkan tanda paragraf', 'eMarks(this)'))),
+            G('Gaya',
+                R(B('P', 'Normal: paragraf biasa', "eStyle('normal')"), B('<b>H1</b>', 'Judul 1', "eStyle('h1')")),
+                R(B('<b>H2</b>', 'Judul 2', "eStyle('h2')"), B('<b>H3</b>', 'Judul 3', "eStyle('h3')")),
+                R(B(I('heading'), 'Judul dokumen (tengah)', "eStyle('title')"), B(I('quote-left'), 'Kutipan', "eStyle('quote')"))),
+            G('Pengeditan',
+                R(B(I('magnifying-glass') + ' Cari', 'Cari teks', 'eFind()'), B(I('arrow-down') + ' Berikutnya', 'Cari hasil berikutnya', 'eFindNext()')),
+                R(B(I('right-left') + ' Ganti', 'Cari dan ganti semua', 'eReplace()'), B(I('object-group') + ' Pilih Semua', 'Pilih seluruh dokumen', 'eSelAll()')))
+        ];
+        const LAYOUT = [
+            G('Pengaturan Halaman',
+                R(selS('Margin halaman', [['Margin: Normal (2 cm)', '2'], ['Margin: Sempit (1,27 cm)', '1.27'], ['Margin: Sedang (2,54 cm)', '2.54'], ['Margin: Lebar (3 cm)', '3']], 'ePage(\'margin\',this.value)', 168, '2'),
+                  selS('Orientasi halaman', [['Potret', 'portrait'], ['Lanskap', 'landscape']], 'ePage(\'orient\',this.value)', 90, 'portrait')),
+                R(selS('Ukuran kertas', [['A4 (21 × 29,7 cm)', 'A4'], ['F4/Folio (21,5 × 33 cm)', 'F4'], ['Letter (21,6 × 27,9 cm)', 'Letter'], ['Legal (21,6 × 35,6 cm)', 'Legal']], 'ePage(\'size\',this.value)', 168, 'A4'),
+                  B(I('file-circle-plus') + ' Jeda Halaman', 'Sisipkan pemisah halaman di posisi kursor', 'eBreak()'))),
+            G('Paragraf',
+                R('<span class="lbl">Indentasi Kiri</span>' + numIn('pIndL', 'Indentasi kiri (cm)', "ePara('ml',this.value)"), '<span class="lbl">Sebelum</span>' + numIn('pBef', 'Spasi sebelum paragraf (pt)', "ePara('mt',this.value)", 1)),
+                R('<span class="lbl">Indentasi Kanan</span>' + numIn('pIndR', 'Indentasi kanan (cm)', "ePara('mr',this.value)"), '<span class="lbl">Sesudah</span>' + numIn('pAft', 'Spasi sesudah paragraf (pt)', "ePara('mb',this.value)", 1))),
+            G('Alur Halaman',
+                R(B(I('ban') + ' Jangan Terpecah', 'Paragraf/tabel tidak terpotong antar halaman (hidup/mati)', 'eKeep()')),
+                R(B(I('file-arrow-down') + ' Mulai Halaman Baru', 'Paragraf ini mulai di halaman baru (hidup/mati)', 'eBreakBefore()'))),
+            G('Margin Kustom', R('<span class="lbl">Semua sisi</span>' + numIn('pMg', 'Margin kustom (cm), 0,5 sampai 6', "ePage('margin',Math.min(6,Math.max(0.5,+this.value||2)))", 0.1) + '<span class="lbl">cm</span>')),
+            ARR()
+        ];
+        const PIC = [
+            G('Sesuaikan',
+                R(selV('Kecerahan', 'Kecerahan', [['−40%', '0.6'], ['−20%', '0.8'], ['Normal', '1'], ['+20%', '1.2'], ['+40%', '1.4']], "eImgFx('br',this.value)", 96),
+                  selV('Kontras', 'Kontras', [['−40%', '0.6'], ['−20%', '0.8'], ['Normal', '1'], ['+20%', '1.2'], ['+40%', '1.4']], "eImgFx('ct',this.value)", 84)),
+                R(selV('Warna gambar', 'Warna', [['Normal', 'n'], ['Hitam putih', 'g'], ['Sepia', 's']], "eImgColor(this.value)", 96),
+                  selV('Transparansi', 'Transparansi', [['0%', '1'], ['20%', '0.8'], ['40%', '0.6'], ['60%', '0.4'], ['80%', '0.2']], "eImgFx('op',this.value)", 112))),
+            G('Gaya Gambar',
+                R(...[['Polos', ''], ['Bingkai hijau', 'border:2px solid #14532d'], ['Sudut membulat', 'border-radius:12px'], ['Bayangan', 'box-shadow:3px 3px 6px rgba(0,0,0,.5)'], ['Bingkai putih + bayangan', 'border:4px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.6)']].map(([t, c], i) => B(swatch(c), t, 'eImgStyle(' + i + ')'))),
+                R(colorBtn('pen', 'Warna garis tepi (Picture Border)', 'eImgBorder(this.value)', '#14532d'), selV('Tebal garis tepi', 'Tebal garis', [['Tanpa', '0'], ['1 px', '1'], ['2 px', '2'], ['3 px', '3'], ['5 px', '5']], "eImgBw(this.value)", 96))),
+            G('Aksesibilitas', `<div class="er">${BB('universal-access', 'Teks Alt', 'Isi teks alternatif gambar', 'eImgAlt()')}</div>`),
+            ARR(),
+            G('Ukuran',
+                R('<span class="lbl">Tinggi</span><input type="number" id="imgH" class="eb" style="width:66px" step="0.1" min="0" placeholder="auto" title="Tinggi (cm), kosong = otomatis"><span class="lbl">cm</span>',
+                  '<span class="lbl">Lebar</span><input type="number" id="imgW" class="eb" style="width:66px" step="0.1" min="1" title="Lebar (cm)"><span class="lbl">cm</span>'),
+                R(B(I('check') + ' Terapkan', 'Terapkan lebar/tinggi', 'eImgWH()'), B(I('crop-simple') + ' Potong', 'Potong (crop): ubah lebar/tinggi tanpa memipihkan gambar', 'eImgCrop()'),
+                  selV('Lebar cepat', 'Lebar %', [['25%', '25'], ['50%', '50'], ['75%', '75'], ['100%', '100']], "eImgSet('pct',this.value)", 84),
+                  B(I('arrow-rotate-left') + ' Reset', 'Kembalikan ukuran & efek awal', "eImgSet('reset')"))),
+            G('Hapus', `<div class="er">${BB('trash', 'Hapus', 'Hapus gambar', "eImgSet('del')")}</div>`)
+        ];
+        const SHAPES = [['Persegi', 'rect'], ['Persegi membulat', 'rrect'], ['Oval', 'oval'], ['Segitiga', 'tri'], ['Panah kanan', 'arrow'], ['Bintang', 'star'], ['Garis', 'line']];
+        const SYMS = ['©', '®', '™', '°', '±', '×', '÷', '≤', '≥', '≠', '≈', '∞', 'π', '√', '²', '³', '½', '¼', '→', '←', '↑', '↓', '✓', '✗', '•', '§', '—', '“', '”', '﷽', 'ﷲ', 'ﷺ'];
+        const INSERT = [
+            G('Halaman',
+                R(B(I('file') + ' Halaman Kosong', 'Sisipkan halaman kosong', 'eBlank()')),
+                R(B(I('file-circle-plus') + ' Jeda Halaman', 'Sisipkan pemisah halaman', 'eBreak()'))),
+            G('Tabel', `<div class="er">${BB('table', 'Tabel', 'Sisipkan tabel (baris x kolom)', 'eTable()')}</div>`),
+            G('Ilustrasi',
+                `<div class="er">${BB('image', 'Gambar', 'Sisipkan gambar dari perangkat', "document.getElementById('eImgIn').click()")}`
+                + `<div style="display:flex;flex-direction:column;gap:4px;justify-content:center">`
+                + selV('Sisipkan bentuk', 'Bentuk', SHAPES, 'eShape(this.value)', 110)
+                + selV('Sisipkan ikon', 'Ikon', [['🌿 Daun', 'leaf'], ['🌳 Pohon', 'tree'], ['♻ Daur ulang', 'recycle'], ['💧 Air', 'droplet'], ['☀ Matahari', 'sun'], ['🌍 Bumi', 'earth-asia'], ['❤ Hati', 'heart'], ['⭐ Bintang', 'star'], ['✔ Centang', 'circle-check'], ['📖 Buku', 'book-open']], 'eIcon(this.value)', 110)
+                + `</div>${BB('chart-column', 'Bagan', 'Sisipkan diagram batang dari data', 'eChart()')}</div>`),
+            G('Tautan', `<div class="er">${BB('link', 'Tautan', 'Jadikan teks terpilih sebagai tautan', 'eLink()')}</div>`),
+            G('Header & Footer',
+                R(B(I('heading') + ' Header', 'Teks header (tercetak di atas tiap halaman PDF)', "eHF('hdr')"), B(I('shoe-prints') + ' Footer', 'Teks footer (tercetak di bawah tiap halaman PDF)', "eHF('ftr')")),
+                R(selS('Nomor halaman (muncul saat cetak PDF)', [['Nomor Halaman: Tanpa', ''], ['Bawah tengah', 'bottom-center'], ['Bawah kanan', 'bottom-right'], ['Atas kanan', 'top-right']], "ePage('num',this.value)", 156, ''))),
+            G('Teks',
+                R(B(I('square') + ' Kotak Teks', 'Sisipkan kotak teks berbingkai', 'eTextBox()'), B(I('minus') + ' Garis', 'Sisipkan garis horizontal', "fmt('insertHorizontalRule')")),
+                R(B(I('calendar-day') + ' Tanggal', 'Sisipkan tanggal hari ini', 'eDate()'),
+                  selV('Sisipkan simbol', 'Ω Simbol', SYMS.map(x => [x, x]), 'eSym(this.value)', 84))),
+            G('Dokumen RPP',
+                R(B(I('book-quran') + ' Dalil Arab', 'Kotak dalil (ayat/hadis) + terjemah', 'eDalil()'), B(I('signature') + ' Tanda Tangan', 'Blok tanda tangan Kepala Madrasah & Guru', 'eSign()')),
+                R(B(I('image') + ' Ket. Gambar', 'Keterangan gambar bernomor otomatis', "eCaption('Gambar')"), B(I('table') + ' Ket. Tabel', 'Keterangan tabel bernomor otomatis', "eCaption('Tabel')"), B(I('square-check') + ' Centang', 'Kotak centang', 'eCheck()')))
+        ];
+        const FILE = [
+            G('Cetak & Simpan',
+                `<div class="er">${BB('print', 'Cetak / PDF', 'Cetak atau simpan sebagai PDF', 'printPDF()')}${BB('file-word', 'Simpan Word', 'Unduh sebagai dokumen Word (.doc)', 'eSaveDoc()')}${BB('file-code', 'Simpan HTML', 'Unduh sebagai halaman HTML', 'eSaveHTML()')}${BB('file-lines', 'Simpan Teks', 'Unduh sebagai teks polos (.txt)', 'eSaveTxt()')}</div>`),
+            G('Salin', `<div class="er">${BB('copy', 'Salin Semua', 'Salin seluruh dokumen (untuk ditempel di Word/Docs)', 'eCopyAll()')}</div>`),
+            G('Navigasi', `<div class="er">${BB('arrow-left', 'Kembali ke Form', 'Tutup pratinjau dan kembali ke form', 'closePreview()')}</div>`)
+        ];
+        const DESIGN = [
+            G('Watermark',
+                R(selV('Pilih teks watermark', 'Watermark', [['RAHASIA', 'RAHASIA'], ['DRAFT', 'DRAFT'], ['CONTOH', 'CONTOH'], ['SALINAN', 'SALINAN'], ['Teks kustom…', '__custom']], 'eWM(this.value)', 116)),
+                R(B(I('xmark') + ' Hapus Watermark', 'Hapus watermark', "eWM('')"))),
+            G('Latar Halaman',
+                R(colorBtn('palette', 'Warna halaman (hanya di layar, tidak tercetak)', 'ePageColor(this.value)', '#fef3c7') + '<span class="lbl">Warna halaman</span>'),
+                R(B(I('xmark') + ' Reset', 'Kembalikan warna putih', "ePageColor('')"))),
+            G('Format Dokumen',
+                R(selV('Spasi baris seluruh dokumen', 'Spasi Dokumen', [['Bawaan', ''], ['1', '1'], ['1,15', '1.15'], ['1,5', '1.5'], ['2', '2']], "eDoc('lh',this.value)", 124),
+                  selV('Jarak sesudah paragraf', 'Jarak Paragraf', [['Bawaan', '-'], ['0 pt', '0'], ['6 pt', '6'], ['12 pt', '12']], "eDoc('after',this.value)", 118)),
+                R(B(I('align-justify') + ' Rata kiri-kanan semua paragraf', 'Ratakan seluruh paragraf / batalkan', "eDoc('just')")))
+        ];
+        const REVIEW = [
+            G('Pemeriksaan',
+                R(B(I('spell-check') + ' Ejaan', 'Hidupkan/matikan garis bawah ejaan', 'eSpell(this)'), B(I('calculator') + ' Statistik', 'Hitung kata, karakter, paragraf, halaman', 'eStats()')),
+                R(selS('Bahasa dokumen (untuk ejaan)', [['Bahasa: Indonesia', 'id-ID'], ['English', 'en-US'], ['العربية', 'ar-SA']], 'eLang(this.value)', 150, 'id-ID'))),
+            G('Komentar',
+                R(B(I('comment-dots') + ' Komentar Baru', 'Beri catatan pada teks terpilih', 'eComment()'), B(I('comments') + ' Daftar', 'Lihat semua komentar', 'eComList()')),
+                R(B(I('eye') + ' Tampil/Sembunyi', 'Tampilkan atau sembunyikan sorotan komentar', 'eComToggle()'), B(I('trash') + ' Hapus Semua', 'Hapus semua komentar', 'eComDel()'))),
+            G('Baca Nyaring',
+                R(B(I('volume-high') + ' Baca', 'Bacakan teks terpilih atau seluruh dokumen', 'eSpeak()')),
+                R(B(I('stop') + ' Berhenti', 'Hentikan pembacaan', 'eStop()')))
+        ];
+        const VIEW = [
+            G('Zoom',
+                R(B(I('magnifying-glass-minus'), 'Perkecil', 'eZoomStep(-10)'),
+                  `<select class="eb" id="zsel" style="width:78px" title="Zoom" onchange="eZoom(this.value)">${[50, 75, 90, 100, 110, 125, 150, 200].map(z => `<option value="${z}"${z === 100 ? ' selected' : ''}>${z}%</option>`).join('')}</select>`,
+                  B(I('magnifying-glass-plus'), 'Perbesar', 'eZoomStep(10)')),
+                R(B('100%', 'Ukuran asli', 'eZoom(100)'), B(I('left-right') + ' Lebar Halaman', 'Sesuaikan lebar halaman dengan layar', 'eFitW()'), B(I('file') + ' Satu Halaman', 'Tampilkan satu halaman penuh', 'eFitP()'))),
+            G('Tampilkan',
+                R(B(I('ruler-horizontal') + ' Penggaris', 'Tampilkan penggaris dan area margin', 'eRuler(this)'), B(I('paragraph') + ' Tanda Paragraf', 'Tampilkan tanda paragraf', 'eMarks(this)')),
+                R(B(I('table-cells') + ' Garis Bantu Tabel', 'Tampilkan garis putus-putus pada tabel tanpa garis', 'eGrid(this)'))),
+            G('Jendela',
+                R(B(I('expand') + ' Layar Penuh', 'Mode layar penuh', 'eFull()')),
+                R(B(I('angles-up') + ' Ciutkan Pita', 'Sembunyikan/tampilkan pita menu', 'eCollapse()')))
+        ];
+        const TBL = [
+            G('Baris & Kolom',
+                R(B(I('arrow-up') + I('grip-lines'), 'Sisip baris di atas', "eTRow('above')"), B(I('arrow-down') + I('grip-lines'), 'Sisip baris di bawah', "eTRow('below')"), B(I('xmark') + I('grip-lines'), 'Hapus baris', "eTDel('row')")),
+                R(B(I('arrow-left') + I('table-columns'), 'Sisip kolom di kiri', "eTCol('left')"), B(I('arrow-right') + I('table-columns'), 'Sisip kolom di kanan', "eTCol('right')"), B(I('xmark') + I('table-columns'), 'Hapus kolom', "eTDel('col')"))),
+            G('Gabung',
+                R(B(I('object-group') + ' Gabung Sel', 'Gabungkan sel dengan sel di kanannya', 'eMerge()')),
+                R(B(I('object-ungroup') + ' Pisah Sel', 'Pisahkan sel gabungan', 'eSplit()'))),
+            G('Gaya Tabel',
+                R(selV('Gaya tabel siap pakai', 'Gaya Tabel', [['Kisi hitam', 'grid'], ['Header hijau', 'green'], ['Belang-belang', 'zebra'], ['Tanpa garis', 'plain']], 'eTStyle(this.value)', 112), B(I('table-list') + ' Header', 'Jadikan baris pertama sebagai header (hidup/mati)', 'eTHead()')),
+                R(selV('Garis tabel', 'Garis', [['Semua garis', 'all'], ['Garis luar', 'outer'], ['Garis dalam', 'inner'], ['Tanpa garis', 'none']], 'eTBorder(this.value)', 100),
+                  colorBtn('pen', 'Warna garis tabel', 'eTBColor(this.value)', '#000000'), colorBtn('fill-drip', 'Warna sel (blok beberapa sel untuk banyak sel)', 'eShade(this.value)', '#86efac'), B(I('droplet-slash'), 'Hapus warna sel', "eShade('')"))),
+            G('Ukuran',
+                R(selV('Lebar tabel', 'Lebar Tabel', [['100%', '100'], ['75%', '75'], ['50%', '50'], ['Otomatis', 'auto']], 'eTWidth(this.value)', 100), selV('Rata tabel', 'Rata Tabel', [['Kiri', 'left'], ['Tengah', 'center'], ['Kanan', 'right']], 'eTAlign(this.value)', 90)),
+                R('<span class="lbl">Kolom</span>' + numIn('tcw', 'Lebar kolom (cm)', 'eColW(this.value)', 0.5) + '<span class="lbl">Baris</span>' + numIn('trh', 'Tinggi baris (cm)', 'eRowH(this.value)', 0.1))),
+            G('Perataan & Spasi',
+                R(B(I('arrow-up'), 'Rata atas sel', "eTVA('top')"), B(I('minus'), 'Rata tengah sel', "eTVA('middle')"), B(I('arrow-down'), 'Rata bawah sel', "eTVA('bottom')"),
+                  selV('Jarak dalam sel', 'Padding', [['Rapat', '2'], ['Sedang', '5'], ['Longgar', '10']], 'eTPad(this.value)', 84)),
+                R(B(I('maximize') + ' Sesuaikan isi', 'Lebar kolom otomatis', "eTFit('auto')"), B(I('grip-lines-vertical') + ' Kolom sama lebar', 'Semua kolom sama lebar', "eTFit('fixed')"))),
+            G('Hapus', `<div class="er">${BB('trash', 'Hapus Tabel', 'Hapus seluruh tabel', "eTDel('tbl')")}</div>`)
+        ];
+        const TABS = [['file', 'File'], ['home', 'Beranda'], ['insert', 'Sisipkan'], ['design', 'Desain'], ['layout', 'Layout'], ['review', 'Tinjau'], ['view', 'Tampilan']];
+        bar.innerHTML = '<div class="rtabs">' + TABS.map(([k, l]) => `<span class="rtab${k === 'home' ? ' on' : ''}" data-t="${k}" onclick="eTab('${k}')">${l}</span>`).join('')
+            + `<span class="rtab pic" data-t="pic" onclick="eTab('pic')" style="display:none">Format Gambar</span><span class="rtab tbl" data-t="tbl" onclick="eTab('tbl')" style="display:none">Tata Letak Tabel</span><span class="rtab" style="margin-left:auto" title="Ciutkan / bentangkan pita" onclick="eCollapse()">⌃</span></div>`
+            + PNL('file', FILE) + PNL('home', HOME, true) + PNL('insert', INSERT) + PNL('design', DESIGN) + PNL('layout', LAYOUT) + PNL('review', REVIEW) + PNL('view', VIEW) + PNL('pic', PIC) + PNL('tbl', TBL);
+        bar.insertAdjacentHTML('beforeend', '<input type="file" id="eImgIn" accept="image/*" class="hidden" onchange="eImg(this)">');
+        bar.querySelectorAll('button.eb:not(.big)').forEach(b => {
+            if (!b.querySelector('i')) return;
+            [...b.childNodes].forEach(n => { if (n.nodeType === 3 && n.nodeValue.trim()) { const sp = document.createElement('span'); sp.className = 'bt'; sp.textContent = n.nodeValue; n.replaceWith(sp); } });
+        });
+        /* ---- Mode HP: hanya menu penting yang tampil ---- */
+        const MKEEP = {
+            file: ['Cetak atau simpan sebagai PDF', 'Unduh sebagai dokumen Word (.doc)', 'Tutup pratinjau dan kembali ke form'],
+            home: ['Tempel sebagai teks biasa', 'Salin (Ctrl+C)', 'Urungkan (Ctrl+Z)', 'Ulangi (Ctrl+Y)', 'Tebal (Ctrl+B)', 'Miring (Ctrl+I)', 'Garis bawah (Ctrl+U)',
+                   'Perbesar huruf', 'Perkecil huruf', 'Warna huruf', 'Daftar poin', 'Daftar nomor', 'Rata kiri', 'Rata tengah', 'Rata kanan', 'Rata kiri-kanan',
+                   'Normal: paragraf biasa', 'Judul 1', 'Judul 2', 'Cari teks', 'Cari dan ganti semua'],
+            insert: ['Sisipkan tabel (baris x kolom)', 'Sisipkan gambar dari perangkat', 'Sisipkan pemisah halaman', 'Kotak dalil (ayat/hadis) + terjemah',
+                     'Blok tanda tangan Kepala Madrasah & Guru', 'Jadikan teks terpilih sebagai tautan'],
+            layout: ['Margin halaman', 'Ukuran kertas', 'Orientasi halaman', 'Sisipkan pemisah halaman di posisi kursor'],
+            view: ['Perkecil', 'Zoom', 'Perbesar', 'Sesuaikan lebar halaman dengan layar', 'Mode layar penuh'],
+            pic: ['Lebar (cm)', 'Terapkan lebar/tinggi', 'Lebar cepat', 'Kembalikan ukuran & efek awal', 'Hapus gambar'],
+            tbl: ['Sisip baris di atas', 'Sisip baris di bawah', 'Hapus baris', 'Sisip kolom di kiri', 'Sisip kolom di kanan', 'Hapus kolom',
+                  'Gabungkan sel dengan sel di kanannya', 'Pisahkan sel gabungan', 'Gaya tabel siap pakai', 'Hapus seluruh tabel']
+        };
+        bar.querySelectorAll('.rib').forEach(pn => {
+            const keep = MKEEP[pn.dataset.p]; if (!keep) return;
+            pn.querySelectorAll('.eb').forEach(x => { if (!keep.includes(x.title)) x.classList.add('mh'); });
+            pn.querySelectorAll('.er,.ecol').forEach(x => { if (!x.querySelector('.eb:not(.mh)')) x.classList.add('mh'); });
+            pn.querySelectorAll('.eg').forEach(g => { if (!g.querySelector('.eb:not(.mh)')) g.classList.add('mh'); });
+            pn.querySelectorAll('.lbl').forEach(l => {
+                const nx = l.nextElementSibling, pv = l.previousElementSibling;
+                if (l.closest('.eg').classList.contains('mh') || (nx && nx.classList.contains('mh') && !nx.classList.contains('lbl')) || (pv && pv.classList.contains('mh') && pv.tagName === 'INPUT')) l.classList.add('mh');
+            });
+        });
+        let curTab = 'home';
+        window.eTab = t => {
+            curTab = t; bar.classList.remove('coll');
+            bar.querySelectorAll('.rtab').forEach(x => x.classList.toggle('on', x.dataset.t === t));
+            bar.querySelectorAll('.rib').forEach(x => x.style.display = x.dataset.p === t ? '' : 'none');
+            if (window.layoutBars) layoutBars();
+        };
+        /* ---- Layout: halaman ---- */
+        const PG = { size: 'A4', orient: 'portrait', margin: '2' };
+        const SZ = { A4: [21, 29.7], F4: [21.5, 33], Letter: [21.59, 27.94], Legal: [21.59, 35.56] };
+        const pgStyle = document.createElement('style'); pgStyle.id = 'pageStyle'; document.head.appendChild(pgStyle);
+        const PG2 = { num: '', hdr: '', ftr: '' };
+        window.ePage = (k, v) => {
+            if (k in PG2) PG2[k] = v; else PG[k] = v;
+            const [w, h] = SZ[PG.size], pt = PG.orient === 'portrait', pw = pt ? w : h, ph = pt ? h : w, mg = +PG.margin;
+            const q = t => '"' + String(t).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ') + '"';
+            const box = 'font:9pt Arial,Helvetica,sans-serif;color:#333;';
+            let mb = '';
+            if (PG2.hdr) mb += `@top-center{content:${q(PG2.hdr)};${box}}`;
+            if (PG2.ftr) mb += `@bottom-left{content:${q(PG2.ftr)};${box}}`;
+            if (PG2.num) mb += `@${PG2.num}{content:counter(page);${box}}`;
+            pgStyle.textContent = `@media print{@page{size:${pw}cm ${ph}cm;margin:${mg}cm;${mb}}} .cover{min-height:${Math.round((ph - 2 * mg - 0.1) * 10)}mm!important}`;
+            W().style.maxWidth = pw + 'cm';
+            drawRuler();
+            if (window.layoutBars) layoutBars();
+        };
+        window.eHF = k => {
+            const v = prompt(k === 'hdr' ? 'Teks header (kosongkan untuk menghapus):' : 'Teks footer (kosongkan untuk menghapus):', PG2[k]);
+            if (v !== null) ePage(k, v.trim());
+        };
+        /* ---- Sisipkan ---- */
+        const ins = h => { if (restore()) document.execCommand('insertHTML', false, h); };
+        window.eBlank = () => ins('<div class="page-break"></div><p><br></p><div class="page-break"></div><p><br></p>');
+        window.eShape = v => {
+            if (!v) return;
+            const st = 'fill="#dcfce7" stroke="#14532d" stroke-width="2"';
+            const sh = {
+                rect: `<rect x="2" y="2" width="116" height="66" ${st}/>`,
+                rrect: `<rect x="2" y="2" width="116" height="66" rx="14" ${st}/>`,
+                oval: `<ellipse cx="60" cy="35" rx="57" ry="32" ${st}/>`,
+                tri: `<polygon points="60,3 117,67 3,67" ${st}/>`,
+                arrow: `<polygon points="2,24 70,24 70,4 118,35 70,66 70,46 2,46" ${st}/>`,
+                star: `<polygon points="60,3 75,26 102,28 82,46 88,68 60,56 32,68 38,46 18,28 45,26" ${st}/>`,
+                line: `<line x1="2" y1="35" x2="118" y2="35" stroke="#14532d" stroke-width="3"/>`
+            }[v];
+            ins(`<svg viewBox="0 0 120 70" width="120" height="70" style="display:inline-block;vertical-align:middle">${sh}</svg>&nbsp;`);
+        };
+        window.eIcon = v => { if (v) ins(`<i class="fa-solid fa-${v}" style="color:#14532d;font-size:1.2em">&#8203;</i>&nbsp;`); };
+        window.eSym = v => { if (v && restore()) document.execCommand('insertText', false, v); };
+        window.eDate = () => { if (restore()) document.execCommand('insertText', false, new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })); };
+        window.eTextBox = () => ins('<div style="border:1.5px solid #000;padding:8px 12px;margin:6px 0">Ketik teks di sini</div><p><br></p>');
+        window.eLink = () => {
+            if (!restore()) return;
+            const u = prompt('Alamat tautan (URL):', 'https://'); if (!u || u === 'https://') return;
+            restore();
+            if (getSelection().isCollapsed) document.execCommand('insertHTML', false, `<a href="${u.replace(/"/g, '')}" target="_blank">${u.replace(/</g, '&lt;')}</a>&nbsp;`);
+            else document.execCommand('createLink', false, u);
+        };
+        window.eChart = () => {
+            if (!restore()) return;
+            const t = prompt('Judul bagan:', 'Hasil Penilaian'); if (t === null) return;
+            const d = prompt('Data: Label=Nilai dipisah titik koma', 'Aksi 1=40; Aksi 2=65; Aksi 3=30; Aksi 4=80'); if (!d) return;
+            const rows = d.split(';').map(x => x.split('=')).filter(x => x.length === 2 && !isNaN(+x[1])).map(x => [x[0].trim(), +x[1]]).slice(0, 12);
+            if (!rows.length) { alert('Format data tidak dikenali. Contoh: A=10; B=20'); return; }
+            const esc = x => String(x).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+            const mx = Math.max(...rows.map(r => r[1]), 1), W0 = 420, H0 = 230, bw = (W0 - 40) / rows.length;
+            let g = `<text x="${W0 / 2}" y="16" text-anchor="middle" font-size="13" font-weight="bold" font-family="Arial">${esc(t)}</text><line x1="30" y1="${H0 - 40}" x2="${W0 - 8}" y2="${H0 - 40}" stroke="#000"/>`;
+            rows.forEach((r, i) => {
+                const bh = r[1] / mx * (H0 - 90), x = 34 + i * bw;
+                g += `<rect x="${x}" y="${H0 - 40 - bh}" width="${bw * 0.7}" height="${bh}" fill="#16a34a" stroke="#14532d"/><text x="${x + bw * 0.35}" y="${H0 - 44 - bh}" text-anchor="middle" font-size="10" font-family="Arial">${r[1]}</text><text x="${x + bw * 0.35}" y="${H0 - 25}" text-anchor="middle" font-size="10" font-family="Arial">${esc(r[0])}</text>`;
+            });
+            ins(`<svg viewBox="0 0 ${W0} ${H0}" style="width:100%;max-width:420px;display:block;margin:6px auto">${g}</svg><p><br></p>`);
+        };
+        window.eBreak = () => { if (restore()) document.execCommand('insertHTML', false, '<div class="page-break"></div><p><br></p>'); };
+        window.ePara = (k, v) => {
+            if (!restore()) return; const h = host(); if (!h) return; const n = parseFloat(v) || 0;
+            if (k === 'ml') h.style.marginLeft = n + 'cm'; else if (k === 'mr') h.style.marginRight = n + 'cm';
+            else if (k === 'mt') h.style.marginTop = n + 'pt'; else if (k === 'mb') h.style.marginBottom = n + 'pt';
+        };
+        /* ---- Format Gambar ---- */
+        const need = () => { if (!selImg) { alert('Klik gambar dulu.'); return false; } return true; };
+        const fx = im => {
+            const d = im.dataset, f = [];
+            if (d.br) f.push(`brightness(${d.br})`); if (d.ct) f.push(`contrast(${d.ct})`);
+            if (d.gs) f.push('grayscale(1)'); if (d.sp) f.push('sepia(1)');
+            im.style.filter = f.join(' '); im.style.opacity = d.op && d.op !== '1' ? d.op : '';
+        };
+        window.eImgFx = (k, v) => { if (!need()) return; selImg.dataset[k] = v; fx(selImg); };
+        window.eImgColor = v => { if (!need()) return; delete selImg.dataset.gs; delete selImg.dataset.sp; if (v === 'g') selImg.dataset.gs = 1; if (v === 's') selImg.dataset.sp = 1; fx(selImg); };
+        window.eImgStyle = i => {
+            if (!need()) return; const st = selImg.style;
+            st.border = ''; st.borderRadius = ''; st.boxShadow = '';
+            if (i === 1) st.border = '2px solid #14532d';
+            if (i === 2) st.borderRadius = '12px';
+            if (i === 3) st.boxShadow = '3px 3px 6px rgba(0,0,0,.5)';
+            if (i === 4) { st.border = '4px solid #fff'; st.boxShadow = '0 2px 6px rgba(0,0,0,.6)'; }
+            syncImg();
+        };
+        window.eImgBorder = c => { if (!need()) return; selImg.dataset.bc = c; selImg.style.border = `${selImg.dataset.bw || 2}px solid ${c}`; };
+        window.eImgBw = w => { if (!need()) return; selImg.dataset.bw = w; selImg.style.border = +w ? `${w}px solid ${selImg.dataset.bc || '#14532d'}` : ''; };
+        window.eImgAlt = () => { if (!need()) return; const v = prompt('Teks alternatif gambar:', selImg.alt || ''); if (v !== null) selImg.alt = v; };
+        window.eImgWrap = v => {
+            if (!need()) return;
+            if (v === 'inline') eImgSet('inline'); else if (v === 'fl') eImgSet('float', 'left'); else if (v === 'fr') eImgSet('float', 'right');
+            else if (v === 'tb') { selImg.style.float = 'none'; selImg.style.display = 'block'; selImg.style.margin = '8px auto'; syncImg(); }
+        };
+        window.eImgZ = d => { if (!need()) return; selImg.style.position = 'relative'; selImg.style.zIndex = (+selImg.style.zIndex || 0) + d; };
+        window.eImgRot = d => { if (!need()) return; const r = (((+selImg.dataset.rot || 0) + d) % 360 + 360) % 360; selImg.dataset.rot = r; selImg.style.transform = r ? `rotate(${r}deg)` : ''; syncImg(); };
+        window.eImgCrop = () => { if (!need()) return; selImg.style.objectFit = selImg.style.objectFit === 'cover' ? '' : 'cover'; if (selImg.style.objectFit === 'cover') alert('Mode potong aktif: ubah lebar/tinggi untuk memotong gambar (tidak dipipihkan). Tekan Potong lagi untuk menonaktifkan.'); };
+
+        /* ================= Fungsi tambahan ribbon ================= */
+        const pageDims = () => { const [w, h] = SZ[PG.size], pt = PG.orient === 'portrait'; return pt ? [w, h] : [h, w]; };
+        const PX = 37.795;
+        const tblOf = () => { if (!saved) return null; const n = el(saved.commonAncestorContainer); const t = n && n.closest && n.closest('table'); return t && W().contains(t) ? t : null; };
+        const allCells = T => [...T.rows].flatMap(r => [...r.cells]);
+        const selCells = () => { const T = tblOf(); if (!T) return []; return allCells(T).filter(c => saved.intersectsNode(c)); };
+        const c0 = () => { const a = selCells(); if (!a.length) { alert('Klik dulu di dalam sel tabel.'); return null; } return a[0]; };
+        const down = (name, mime, txt) => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], { type: mime })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 800); };
+        const fname = () => (((document.getElementById('out-mapel') || {}).textContent || 'RPP').trim().replace(/[^\w\-]+/g, '_') || 'RPP') + '_RPP_KBC';
+
+        /* ---- Beranda ---- */
+        window.ePaste = () => {
+            if (!restore()) return;
+            if (!navigator.clipboard || !navigator.clipboard.readText) { alert('Browser tidak mengizinkan. Gunakan Ctrl+V.'); return; }
+            navigator.clipboard.readText().then(t => { restore(); document.execCommand('insertText', false, t); }).catch(() => alert('Izin papan klip ditolak. Gunakan Ctrl+V.'));
+        };
+        let fp = null;
+        window.eFP = () => {
+            if (!restore()) return;
+            const cs = getComputedStyle(el(saved.startContainer));
+            fp = { fw: cs.fontWeight, fs: cs.fontStyle, td: cs.textDecorationLine, c: cs.color, sz: cs.fontSize, ff: cs.fontFamily.replace(/"/g, "'") };
+            W().style.cursor = 'copy';
+            W().addEventListener('mouseup', () => setTimeout(() => {
+                W().style.cursor = '';
+                const sl = getSelection();
+                if (fp && sl.rangeCount && !sl.isCollapsed) {
+                    const d = document.createElement('div'); d.appendChild(sl.getRangeAt(0).cloneContents());
+                    document.execCommand('insertHTML', false, `<span style="font-weight:${fp.fw};font-style:${fp.fs};text-decoration:${fp.td};color:${fp.c};font-size:${fp.sz};font-family:${fp.ff}">${d.innerHTML}</span>`);
+                }
+                fp = null;
+            }, 0), { once: true });
+        };
+        window.eHL = c => { if (!restore()) return; document.execCommand('hiliteColor', false, c) || document.execCommand('backColor', false, c); };
+        window.eSizeStep = d => { if (!restore()) return; const px = parseFloat(getComputedStyle(el(saved.startContainer)).fontSize) || 14; eSize(Math.max(6, Math.round(px + d * 2))); };
+        window.eCase = v => {
+            if (!v || !restore()) return; const t = getSelection().toString(); if (!t) { alert('Blok teks dulu.'); return; }
+            const f = { up: x => x.toUpperCase(), low: x => x.toLowerCase(), title: x => x.toLowerCase().replace(/(^|\s)(\S)/g, (m, a, b) => a + b.toUpperCase()), sent: x => x.toLowerCase().replace(/(^|[.!?]\s+)(\S)/g, (m, a, b) => a + b.toUpperCase()).replace(/^\s*(\S)/, (m, b) => m.replace(b, b.toUpperCase())) }[v];
+            document.execCommand('insertText', false, f(t));
+        };
+        window.eShade = c => {
+            if (!restore()) return;
+            if (tblOf()) selCells().forEach(x => x.style.background = c); else { const h = host(); if (h) h.style.background = c; }
+        };
+        window.eParaBorder = () => { if (!restore()) return; const h = host(); if (!h) return; if (h.style.border) { h.style.border = ''; h.style.padding = ''; } else { h.style.border = '1px solid #000'; h.style.padding = '4px 6px'; } };
+        window.eMarks = b => { const on = W().classList.toggle('marks'); document.querySelectorAll('#edit-bar [onclick*="eMarks"]').forEach(x => x.classList.toggle('on', on)); };
+        window.eStyle = k => {
+            if (!restore()) return;
+            document.execCommand('formatBlock', false, { normal: 'p', h1: 'h1', h2: 'h2', h3: 'h3', title: 'h1', quote: 'blockquote' }[k]);
+            const sl = getSelection(); const b = sl.anchorNode && el(sl.anchorNode).closest('p,h1,h2,h3,blockquote,div');
+            if (!b || !W().contains(b) || b === W()) return;
+            b.setAttribute('style', {
+                normal: 'font-size:inherit;font-weight:normal;font-style:normal;margin:0 0 .5rem;text-align:left',
+                h1: 'font-size:16pt;font-weight:bold;margin:12px 0 6px;text-align:left', h2: 'font-size:14pt;font-weight:bold;margin:10px 0 5px;text-align:left',
+                h3: 'font-size:12pt;font-weight:bold;margin:8px 0 4px;text-align:left', title: 'font-size:20pt;font-weight:bold;margin:12px 0 10px;text-align:center;color:#14532d',
+                quote: 'font-style:italic;border-left:3px solid #c9a227;padding-left:10px;margin:8px 0 8px 1cm'
+            }[k]);
+        };
+        let lastFind = '';
+        window.eFind = () => {
+            const t = prompt('Cari teks:', lastFind); if (!t) return; lastFind = t;
+            const sl = getSelection(), r = document.createRange(); r.selectNodeContents(W()); r.collapse(true); sl.removeAllRanges(); sl.addRange(r);
+            if (!window.find || !window.find(t, false, false, true)) alert('Tidak ditemukan: ' + t);
+        };
+        window.eFindNext = () => { if (!lastFind) { eFind(); return; } if (!window.find(lastFind, false, false, true)) alert('Tidak ada hasil lagi.'); };
+        window.eReplace = () => {
+            const a = prompt('Cari teks:', lastFind); if (!a) return; const b = prompt('Ganti dengan:', ''); if (b === null) return;
+            const rx = new RegExp(a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'); let n = 0;
+            const tw = document.createTreeWalker(W(), NodeFilter.SHOW_TEXT), nodes = []; while (tw.nextNode()) nodes.push(tw.currentNode);
+            nodes.forEach(t => { const nv = t.nodeValue.replace(rx, () => { n++; return b; }); if (nv !== t.nodeValue) t.nodeValue = nv; });
+            lastFind = a; alert(n + ' penggantian dilakukan.');
+        };
+        window.eSelAll = () => { const sl = getSelection(), r = document.createRange(); r.selectNodeContents(W()); sl.removeAllRanges(); sl.addRange(r); saved = r.cloneRange(); };
+
+        /* ---- Sisipkan (RPP) ---- */
+        window.eDalil = () => ins('<div class="dalil"><div class="arab">اكتب الآية أو الحديث هنا</div><div><b>Terjemah:</b> Ketik terjemahan dan sumber (QS./HR.) di sini.</div></div><p><br></p>');
+        window.eSign = () => {
+            const guru = (document.getElementById('out-penyusun') || {}).textContent || '...............................';
+            const tgl = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+            ins(`<table style="width:100%;border-collapse:collapse;margin-top:16px"><tr><td style="width:50%;vertical-align:top;padding:4px">Mengetahui,<br>Kepala MIN 10 Magetan<br><br><br><br><b><u>...............................</u></b><br>NIP. ...............................</td><td style="width:50%;vertical-align:top;padding:4px">Magetan, ${tgl}<br>Guru Mata Pelajaran<br><br><br><br><b><u>${guru.trim()}</u></b><br>NIP. ...............................</td></tr></table><p><br></p>`);
+        };
+        window.eCaption = k => {
+            const t = prompt('Keterangan ' + k.toLowerCase() + ':', ''); if (t === null) return;
+            const n = [...W().querySelectorAll('[data-cap="' + k + '"]')].length + 1;
+            ins(`<p data-cap="${k}" style="text-align:center;font-size:12px;margin:4px 0 10px">${k} ${n}. ${t.replace(/</g, '&lt;')}</p>`);
+        };
+        window.eCheck = () => { if (restore()) document.execCommand('insertText', false, '☐ '); };
+
+        /* ---- Layout ---- */
+        window.eKeep = () => { if (!restore()) return; const h = tblOf() || host(); if (h) h.classList.toggle('avoid-break'); };
+        window.eBreakBefore = () => { if (!restore()) return; const h = tblOf() || host(); if (h) h.classList.toggle('page-break'); };
+
+        /* ---- Desain ---- */
+        const DS = { lh: '', just: false, color: '', zoom: 100, after: '' };
+        const dsEl = document.createElement('style'); dsEl.id = 'docStyle'; document.head.appendChild(dsEl);
+        const applyDS = () => {
+            const q = '#document-content-wrapper'; let c = '';
+            if (DS.lh) c += `${q} p,${q} li,${q} td{line-height:${DS.lh}}`;
+            if (DS.just) c += `${q} p:not(.text-center):not(.text-right):not([style*="text-align"]),${q} li{text-align:justify}`;
+            if (DS.after !== '') c += `${q} p{margin-bottom:${DS.after}pt}`;
+            c += `@media screen{${DS.color ? `${q}{background:${DS.color}!important}` : ''}${q}{zoom:${DS.zoom / 100}}#edit-bar .ruler{zoom:${DS.zoom / 100}}}`;
+            dsEl.textContent = c;
+            const zs = document.getElementById('zsel'); if (zs) zs.value = DS.zoom;
+            const zr = document.getElementById('sbZoom'); if (zr) zr.value = DS.zoom;
+            const zv = document.getElementById('sbZoomV'); if (zv) zv.textContent = DS.zoom + '%';
+            if (window.layoutBars) layoutBars();
+        };
+        window.eDoc = (k, v) => { if (k === 'just') DS.just = !DS.just; else if (k === 'lh') DS.lh = v; else if (k === 'after') DS.after = v === '-' ? '' : v; applyDS(); };
+        window.ePageColor = c => { DS.color = c; applyDS(); };
+        window.eWM = v => {
+            const old = document.getElementById('wm'); if (old) old.remove();
+            if (v === '__custom') { v = (prompt('Teks watermark:', 'CONTOH') || '').trim(); }
+            if (!v) return;
+            const d = document.createElement('div'); d.id = 'wm'; d.textContent = v;
+            document.getElementById('print-area').appendChild(d);
+        };
+
+        /* ---- Tinjau ---- */
+        window.eSpell = b => { W().spellcheck = !W().spellcheck; b.classList.toggle('on', W().spellcheck); };
+        window.eLang = v => { W().lang = v; };
+        window.eStats = () => {
+            const t = W().innerText || '', [pw, ph] = pageDims();
+            const words = (t.match(/\S+/g) || []).length, ch = t.replace(/\n/g, '').length, chs = t.replace(/\s/g, '').length;
+            const par = W().querySelectorAll('p,li,h1,h2,h3,h4,td').length, pages = Math.max(1, Math.ceil(W().scrollHeight / ((ph - 2 * +PG.margin) * PX)));
+            alert(`Statistik dokumen\n\nKata: ${words}\nKarakter (dengan spasi): ${ch}\nKarakter (tanpa spasi): ${chs}\nParagraf/baris/sel: ${par}\nPerkiraan halaman: ±${pages}`);
+        };
+        window.eComment = () => {
+            if (!restore()) return; const sl = getSelection(); if (sl.isCollapsed) { alert('Blok teks yang ingin diberi komentar.'); return; }
+            const note = prompt('Isi komentar:', ''); if (!note) return;
+            const sp = document.createElement('span'); sp.className = 'cmt'; sp.title = note; sp.dataset.note = note;
+            const r = sl.getRangeAt(0);
+            try { r.surroundContents(sp); } catch (e) { document.execCommand('insertHTML', false, `<span class="cmt" title="${note.replace(/"/g, '&quot;')}" data-note="${note.replace(/"/g, '&quot;')}">${sl.toString().replace(/</g, '&lt;')}</span>`); }
+        };
+        window.eComList = () => {
+            const l = [...W().querySelectorAll('.cmt')]; if (!l.length) { alert('Belum ada komentar.'); return; }
+            alert(l.map((x, i) => `${i + 1}. "${x.textContent.slice(0, 50)}" → ${x.dataset.note || x.title}`).join('\n'));
+        };
+        window.eComToggle = () => W().classList.toggle('hide-cmt');
+        window.eComDel = () => { const l = [...W().querySelectorAll('.cmt')]; if (!l.length) { alert('Belum ada komentar.'); return; } if (confirm('Hapus ' + l.length + ' komentar?')) l.forEach(x => x.replaceWith(...x.childNodes)); };
+        window.eSpeak = () => {
+            if (!('speechSynthesis' in window)) { alert('Browser tidak mendukung baca nyaring.'); return; }
+            speechSynthesis.cancel(); const t = (getSelection().toString().trim() || W().innerText).slice(0, 8000);
+            const u = new SpeechSynthesisUtterance(t); u.lang = W().lang || 'id-ID'; speechSynthesis.speak(u);
+        };
+        window.eStop = () => { if ('speechSynthesis' in window) speechSynthesis.cancel(); };
+
+        /* ---- Tampilan ---- */
+        window.eZoom = v => { DS.zoom = Math.min(200, Math.max(50, Math.round(+v || 100))); applyDS(); };
+        window.eZoomStep = d => eZoom(DS.zoom + d);
+        window.eFitW = () => { const [pw] = pageDims(); eZoom((innerWidth - 40) / (pw * PX) * 100); };
+        window.eFitP = () => { const [, ph] = pageDims(); eZoom((innerHeight - bar.offsetHeight - document.getElementById('preview-nav').offsetHeight - 60) / (ph * PX) * 100); };
+        window.eGrid = b => { b.classList.toggle('on', W().classList.toggle('gridv')); };
+        window.eFull = () => { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); };
+        window.eCollapse = () => { bar.classList.toggle('coll'); if (window.layoutBars) layoutBars(); };
+        const ruler = document.createElement('div'); ruler.className = 'ruler'; ruler.style.display = 'none'; ruler.innerHTML = '<div class="rl"></div>'; bar.appendChild(ruler);
+        const drawRuler = () => {
+            const [pw] = pageDims(), mg = +PG.margin, rl = ruler.firstChild;
+            rl.style.cssText = `position:relative;height:18px;margin:0 auto;width:${pw * PX}px;max-width:100%;background:linear-gradient(90deg,#cfcfcf ${mg * PX}px,#fff ${mg * PX}px,#fff ${(pw - mg) * PX}px,#cfcfcf ${(pw - mg) * PX}px);border:1px solid #999;font:9px Arial;color:#444;overflow:hidden`;
+            let h = '';
+            for (let t = -Math.floor(mg * 2); mg + t / 2 <= pw; t++) {
+                const x = (mg + t / 2) * PX, big = t % 2 === 0; if (x < 0) continue;
+                h += `<span style="position:absolute;left:${x}px;bottom:0;width:1px;height:${big ? 8 : 4}px;background:#666"></span>`;
+                if (big && t > 0 && x <= (pw - mg) * PX) h += `<span style="position:absolute;left:${x + 2}px;top:1px">${t / 2}</span>`;
+            }
+            rl.innerHTML = h;
+        };
+        window.eRuler = b => { const on = ruler.style.display === 'none'; ruler.style.display = on ? '' : 'none'; b.classList.toggle('on', on); if (on) drawRuler(); if (window.layoutBars) layoutBars(); };
+
+        /* ---- File ---- */
+        const cleanClone = word => {
+            const live = [W(), ...W().querySelectorAll('*')], c = W().cloneNode(true), cl = [c, ...c.querySelectorAll('*')];
+            if (word) {
+                const P = ['font-weight', 'font-style', 'text-align', 'color', 'background-color', 'vertical-align'], num = v => parseFloat(v) || 0;
+                live.forEach((e, i) => {
+                    if (!i) return; const t = cl[i], cs = getComputedStyle(e);
+                    if (cs.display === 'none') { t.style.display = 'none'; return; }
+                    let st = P.map(p => `${p}:${cs.getPropertyValue(p)}`).join(';') + `;font-size:${(num(cs.fontSize) * 0.75).toFixed(1)}pt;`;
+                    if (cs.textDecorationLine && cs.textDecorationLine !== 'none') st += `text-decoration:${cs.textDecorationLine};`;
+                    ['top', 'right', 'bottom', 'left'].forEach(sd => {
+                        if (cs.getPropertyValue(`border-${sd}-style`) !== 'none' && num(cs.getPropertyValue(`border-${sd}-width`)) > 0) st += `border-${sd}:${cs.getPropertyValue(`border-${sd}-width`)} ${cs.getPropertyValue(`border-${sd}-style`)} ${cs.getPropertyValue(`border-${sd}-color`)};`;
+                        st += `padding-${sd}:${cs.getPropertyValue('padding-' + sd)};`;
+                        if (sd === 'top' || sd === 'bottom') st += `margin-${sd}:${cs.getPropertyValue('margin-' + sd)};`;
+                    });
+                    if (e.tagName === 'TABLE') st += 'width:100%;border-collapse:collapse;';
+                    else if (e.tagName === 'TD' || e.tagName === 'TH') { const T = e.closest('table'); if (T && T.offsetWidth) st += `width:${(e.offsetWidth / T.offsetWidth * 100).toFixed(1)}%;`; }
+                    else if (e.tagName === 'IMG') st += `width:${Math.round(e.offsetWidth)}px;height:auto;`;
+                    t.setAttribute('style', st + (t.getAttribute('style') || ''));
+                });
+            }
+            c.querySelectorAll('[contenteditable]').forEach(x => x.removeAttribute('contenteditable'));
+            c.querySelectorAll('.img-sel').forEach(x => x.classList.remove('img-sel'));
+            c.querySelectorAll('img').forEach(x => { x.removeAttribute('data-seen'); });
+            return c;
+        };
+        window.eSaveDoc = () => {
+            const [pw, ph] = pageDims(), mg = +PG.margin, c = cleanClone(true);
+            const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>RPP</title><!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]--><style>@page WordSection1{size:${pw}cm ${ph}cm;margin:${mg}cm}div.WordSection1{page:WordSection1}body{font-family:Arial;font-size:11pt}table{border-collapse:collapse}.page-break{page-break-before:always}.arab{font-family:'Traditional Arabic','Amiri',serif;font-size:20pt;direction:rtl;text-align:right}</style></head><body><div class="WordSection1">${c.innerHTML}</div></body></html>`;
+            down(fname() + '.doc', 'application/msword', '\ufeff' + html);
+        };
+        window.eSaveHTML = () => {
+            const c = cleanClone(false), css = [...document.querySelectorAll('style')].map(x => x.textContent).join('\n');
+            const html = `<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RPP KBC</title><script src="https://cdn.tailwindcss.com"><\/script><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>${css}</style></head><body style="background:#f1f5f9"><div id="document-content-wrapper" class="max-w-[21cm] mx-auto bg-white p-8 my-4" style="padding-top:2rem">${c.innerHTML}</div></body></html>`;
+            down(fname() + '.html', 'text/html', html);
+        };
+        window.eSaveTxt = () => down(fname() + '.txt', 'text/plain', W().innerText);
+        window.eCopyAll = () => {
+            const sl = getSelection(), r = document.createRange(); r.selectNodeContents(W()); sl.removeAllRanges(); sl.addRange(r);
+            const ok = document.execCommand('copy'); sl.removeAllRanges(); saved = null;
+            alert(ok ? 'Seluruh dokumen disalin. Tempel (Ctrl+V) di Word atau Google Docs.' : 'Gagal menyalin.');
+        };
+
+        /* ---- Alat Tabel ---- */
+        window.eTRow = pos => {
+            const c = c0(); if (!c) return; const tr = c.parentElement, n = tr.cloneNode(true);
+            n.querySelectorAll('td,th').forEach(x => { x.innerHTML = '&nbsp;'; x.removeAttribute('rowspan'); });
+            pos === 'above' ? tr.before(n) : tr.after(n);
+        };
+        window.eTCol = pos => {
+            const c = c0(); if (!c) return; const i = c.cellIndex;
+            [...tblOf().rows].forEach(r => { const x = r.cells[i]; if (!x) return; const n = x.cloneNode(false); n.innerHTML = '&nbsp;'; n.removeAttribute('colspan'); pos === 'left' ? x.before(n) : x.after(n); });
+        };
+        window.eTDel = k => {
+            const c = c0(); if (!c) return; const T = tblOf(), i = c.cellIndex;
+            if (k === 'tbl') { if (confirm('Hapus seluruh tabel?')) T.remove(); }
+            else if (k === 'row') c.parentElement.remove();
+            else [...T.rows].forEach(r => { if (r.cells[i]) r.cells[i].remove(); });
+            saved = null;
+        };
+        window.eMerge = () => {
+            const c = c0(); if (!c) return; const nx = c.nextElementSibling; if (!nx) { alert('Tidak ada sel di sebelah kanan.'); return; }
+            c.colSpan = (c.colSpan || 1) + (nx.colSpan || 1);
+            if (nx.textContent.trim()) c.innerHTML += '<br>' + nx.innerHTML; nx.remove();
+        };
+        window.eSplit = () => {
+            const c = c0(); if (!c) return; if ((c.colSpan || 1) < 2) { alert('Sel ini bukan sel gabungan.'); return; }
+            c.colSpan -= 1; const n = c.cloneNode(false); n.colSpan = 1; n.innerHTML = '&nbsp;'; c.after(n);
+        };
+        window.eTStyle = v => {
+            const c = c0(); if (!c) return; const T = tblOf(); T.style.borderCollapse = 'collapse'; const rows = [...T.rows];
+            allCells(T).forEach(x => { x.style.border = v === 'plain' ? '0' : (v === 'green' ? '1px solid #14532d' : '1px solid #000'); x.style.background = ''; x.style.color = ''; x.style.fontWeight = ''; });
+            if (v === 'green' && rows[0]) [...rows[0].cells].forEach(x => { x.style.background = '#14532d'; x.style.color = '#fff'; x.style.fontWeight = 'bold'; });
+            if (v === 'zebra') { rows.forEach((r, i) => { if (i === 0) [...r.cells].forEach(x => { x.style.background = '#dcfce7'; x.style.fontWeight = 'bold'; }); else if (i % 2 === 0) [...r.cells].forEach(x => x.style.background = '#f0fdf4'); }); }
+        };
+        window.eTHead = () => {
+            const c = c0(); if (!c) return; const r = tblOf().rows[0], on = r.dataset.head === '1';
+            [...r.cells].forEach(x => { x.style.fontWeight = on ? '' : 'bold'; x.style.background = on ? '' : '#dcfce7'; }); r.dataset.head = on ? '' : '1';
+        };
+        window.eTBorder = v => {
+            const c = c0(); if (!c) return; const T = tblOf(); T.style.borderCollapse = 'collapse';
+            if (v === 'all') { T.style.border = ''; allCells(T).forEach(x => x.style.border = '1px solid #000'); }
+            if (v === 'none') { T.style.border = '0'; allCells(T).forEach(x => x.style.border = '0'); }
+            if (v === 'outer') { T.style.border = '1px solid #000'; allCells(T).forEach(x => x.style.border = '0'); }
+            if (v === 'inner') { T.style.border = '0'; allCells(T).forEach(x => x.style.border = '1px solid #000'); }
+        };
+        window.eTBColor = col => { const c = c0(); if (!c) return; const T = tblOf(); allCells(T).forEach(x => { if (x.style.borderStyle !== 'none' && x.style.border !== '0px') x.style.borderColor = col; }); if (T.style.border && T.style.border !== '0px') T.style.borderColor = col; };
+        window.eTWidth = v => { const c = c0(); if (!c) return; tblOf().style.width = v === 'auto' ? 'auto' : v + '%'; };
+        window.eTAlign = v => { const c = c0(); if (!c) return; tblOf().style.margin = v === 'left' ? '6px auto 6px 0' : v === 'right' ? '6px 0 6px auto' : '6px auto'; };
+        window.eColW = v => { const c = c0(); if (!c || !(+v > 0)) return; const i = c.cellIndex, T = tblOf(); T.style.tableLayout = 'fixed'; [...T.rows].forEach(r => { if (r.cells[i]) r.cells[i].style.width = (+v * PX) + 'px'; }); };
+        window.eRowH = v => { const c = c0(); if (!c || !(+v > 0)) return; [...c.parentElement.cells].forEach(x => x.style.height = (+v * PX) + 'px'); };
+        window.eTVA = v => { const c = c0(); if (!c) return; selCells().forEach(x => x.style.verticalAlign = v); };
+        window.eTPad = v => { const c = c0(); if (!c) return; allCells(tblOf()).forEach(x => x.style.padding = v + 'px ' + (v * 1.5) + 'px'); };
+        window.eTFit = v => { const c = c0(); if (!c) return; const T = tblOf(); T.style.tableLayout = v; if (v === 'auto') allCells(T).forEach(x => x.style.width = ''); else { const n = T.rows[0] ? T.rows[0].cells.length : 1; allCells(T).forEach(x => x.style.width = (100 / n) + '%'); } };
+        document.addEventListener('selectionchange', () => {
+            const tt = bar.querySelector('.rtab.tbl'); if (!tt) return; const show = !!tblOf();
+            tt.style.display = show ? '' : 'none';
+            if (!show) { const on = bar.querySelector('.rtab.on'); if (on && on.dataset.t === 'tbl') eTab('home'); }
+        });
+
+        /* ---- Bilah status ---- */
+        const sb = document.createElement('div'); sb.id = 'status-bar';
+        sb.innerHTML = '<span>Kata: <b id="sbW">0</b></span><span>Karakter: <b id="sbC">0</b></span><span>Halaman: <b id="sbP">1</b></span><span class="sbz"><button type="button" class="eb" style="height:20px;min-width:20px" onclick="eZoomStep(-10)">−</button><input type="range" id="sbZoom" min="50" max="200" step="10" value="100" oninput="eZoom(this.value)" style="width:120px"><button type="button" class="eb" style="height:20px;min-width:20px" onclick="eZoomStep(10)">+</button><b id="sbZoomV" style="min-width:38px;text-align:right">100%</b></span>';
+        document.getElementById('print-area').appendChild(sb);
+        window.updStats = () => {
+            const t = W().innerText || '', [pw, ph] = pageDims();
+            document.getElementById('sbW').textContent = (t.match(/\S+/g) || []).length;
+            document.getElementById('sbC').textContent = t.replace(/\n/g, '').length;
+            document.getElementById('sbP').textContent = '±' + Math.max(1, Math.ceil(W().scrollHeight / ((ph - 2 * +PG.margin) * PX)));
+        };
+        let stm; W().addEventListener('input', () => { clearTimeout(stm); stm = setTimeout(updStats, 500); });
+        applyDS();
         W().setAttribute('contenteditable', '');
         W().setAttribute('spellcheck', 'false');
         W().parentNode.insertBefore(bar, W());
@@ -1619,8 +2263,9 @@ Gunakan struktur format JSON persis seperti ini:
             const n = document.getElementById('preview-nav');
             bar.style.top = n.offsetHeight + 'px';
             W().style.paddingTop = (n.offsetHeight + bar.offsetHeight + 16) + 'px';
+            if (window.updStats) updStats();
         };
-        addEventListener('resize', () => window.layoutBars());
+        addEventListener('resize', () => { if (innerWidth < 1024 && (curTab === 'design' || curTab === 'review')) eTab('home'); else window.layoutBars(); });
     })();
     document.getElementById('tanggal').valueAsDate = new Date();
     </script>
