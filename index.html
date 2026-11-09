@@ -940,7 +940,7 @@ Gunakan struktur format JSON persis seperti ini:
             const pcRows = PC.map((n, i) => {
                 const it = pcData.find(x => x && x.nama === n) || pcData[i] || {};
                 const on = pcSel.length ? pcSel.includes(n) : !!it.cek;
-                return `<tr class="avoid-break"><td class="border border-black p-2 text-center align-top">${i+1}</td><td class="border border-black p-2 align-top font-semibold">${n}</td><td class="border border-black p-2 text-center align-top text-lg font-bold cursor-pointer select-none" title="Klik untuk centang/hapus" onclick="this.textContent=this.textContent.trim()?'':'✓'">${on ? '✓' : ''}</td><td class="border border-black p-2 align-top" ${editAttr}>${it.insersi || ''}</td></tr>`;
+                return `<tr class="avoid-break"><td class="border border-black p-2 text-center align-top">${i+1}</td><td class="border border-black p-2 align-top font-semibold" style="text-align:left">${n}</td><td class="border border-black p-2 text-center align-top text-lg font-bold cursor-pointer select-none" title="Klik untuk centang/hapus" onclick="this.textContent=this.textContent.trim()?'':'✓'">${on ? '✓' : ''}</td><td class="border border-black p-2 align-top" style="text-align:left" ${editAttr}>${it.insersi || ''}</td></tr>`;
             }).join('');
             const pcNote = typeof data.integrasiNilai?.pancaCinta === 'string' ? `<div class="mb-2" ${editAttr}>${data.integrasiNilai.pancaCinta}</div>` : '';
             const pcTable = `${pcNote}<div class="overflow-x-auto print:overflow-visible w-full"><table class="w-full min-w-[500px] print:min-w-full border-collapse border border-black text-sm"><thead><tr class="bg-gray-100"><th class="border border-black p-2 w-10">No</th><th class="border border-black p-2 w-1/4 text-left">Panca Cinta</th><th class="border border-black p-2 w-16">Ceklis</th><th class="border border-black p-2 text-left">Insersi Nilai dalam Pembelajaran</th></tr></thead><tbody>${pcRows}</tbody></table></div>`;
@@ -1467,13 +1467,13 @@ Gunakan struktur format JSON persis seperti ini:
         document.addEventListener('selectionchange', () => {
             const sl = getSelection(); if (!sl.rangeCount) return;
             const n = el(sl.anchorNode);
-            if (n && n.closest && n.closest('[contenteditable="true"]') && W().contains(n)) saved = sl.getRangeAt(0).cloneRange();
+            if (n && n.closest && n.closest('[contenteditable]') && W().contains(n)) saved = sl.getRangeAt(0).cloneRange();
         });
         const restore = () => {
             if (!saved) { alert('Klik dulu pada teks yang ingin diedit.'); return false; }
             const sl = getSelection(); sl.removeAllRanges(); sl.addRange(saved); return true;
         };
-        const host = () => saved && el(saved.commonAncestorContainer).closest('[contenteditable="true"]');
+        const host = () => { const h = saved && el(saved.commonAncestorContainer).closest('p,li,td,th,h1,h2,h3,h4,div,figcaption'); return h && h !== W() ? h : null; };
         const curCell = () => saved && el(saved.commonAncestorContainer).closest('td,th');
         window.fmt = (c, v) => { if (restore()) document.execCommand(c, false, v || null); };
         window.eSize = px => {
@@ -1550,6 +1550,8 @@ Gunakan struktur format JSON persis seperti ini:
             B('▦ Tabel', 'Sisipkan tabel', 'eTable()'), B('+Baris', 'Tambah baris di bawah sel', 'eRow(1)'), B('−Baris', 'Hapus baris', 'eRow(-1)'), B('+Kolom', 'Tambah kolom', 'eCol(1)'), B('−Kolom', 'Hapus kolom', 'eCol(-1)'), SEP,
             B('Hapus format', 'Bersihkan format', "fmt('removeFormat')")
         ].join('');
+        W().setAttribute('contenteditable', '');
+        W().setAttribute('spellcheck', 'false');
         W().parentNode.insertBefore(bar, W());
         window.layoutBars = () => {
             const n = document.getElementById('preview-nav');
